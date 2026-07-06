@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Dynamic Preloader -->
+  <script src="preloader.js"></script>
+  <meta name="description" content="HeriTej Pulse News Hub — Browse all stories on Ancient Civilisations, World Heritage, Archaeology, Culture, Arts, Fashion, Food and more." />
+  <title>News Hub | HeriTej Pulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="news.css" />
+  <!-- Chatbot CSS -->
+  <link rel="stylesheet" href="chatbot.css" />
+  <!-- AI Features CSS -->
+  <link rel="stylesheet" href="ai-features.css" />
+  <!-- Google Translate File Origin / CORS relative-protocol Fix -->
+  <script type="text/javascript">
+    (function() {
+      const origCE = document.createElement;
+      document.createElement = function(tag, options) {
+        const el = origCE.call(document, tag, options);
+        const t = tag.toLowerCase();
+        if (t === 'script' || t === 'iframe') {
+          const desc = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src') || 
+                       Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype, 'src') ||
+                       Object.getOwnPropertyDescriptor(Element.prototype, 'src');
+          Object.defineProperty(el, 'src', {
+            set: function(v) {
+              if (typeof v === 'string') {
+                if (v.startsWith('//')) v = 'https:' + v;
+                else if (v.startsWith('file://translate.')) v = v.replace('file://', 'https://');
+              }
+              if (desc && desc.set) desc.set.call(this, v);
+              else this.setAttribute('src', v);
+            },
+            get: function() {
+              return desc && desc.get ? desc.get.call(this) : this.getAttribute('src');
+            },
+            configurable: true
+          });
+        } else if (t === 'link') {
+          const desc = Object.getOwnPropertyDescriptor(HTMLLinkElement.prototype, 'href') ||
+                       Object.getOwnPropertyDescriptor(Element.prototype, 'href');
+          Object.defineProperty(el, 'href', {
+            set: function(v) {
+              if (typeof v === 'string') {
+                if (v.startsWith('//')) v = 'https:' + v;
+                else if (v.startsWith('file://translate.')) v = v.replace('file://', 'https://');
+              }
+              if (desc && desc.set) desc.set.call(this, v);
+              else this.setAttribute('href', v);
+            },
+            get: function() {
+              return desc && desc.get ? desc.get.call(this) : this.getAttribute('href');
+            },
+            configurable: true
+          });
+        }
+        return el;
+      };
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ══════════════ TOP BAR ══════════════ -->
+  <div class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-ticker">
+        🏛️ Nalanda University celebrates 15th year of revival &nbsp;|&nbsp;
+        🎨 India's textile exports hit record ₹3.5 lakh crore &nbsp;|&nbsp;
+        🎭 Kathakali named UNESCO Intangible Heritage &nbsp;|&nbsp;
+        🪔 Diwali 2026 declared national cultural festival
+      </span>
+      <div class="topbar-right">
+        <span class="topbar-date" id="topbar-date"></span>
+        <a href="#" class="topbar-link">Subscribe</a>
+        <a href="#" class="topbar-link">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <div class="nav-logo">
+        <a href="index.html" id="logo-link">
+          <span class="logo-heri">HeriTej</span><span class="logo-pulse">Pulse</span>
+        </a>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-item" id="nav-home">Home</a>
+        <a href="news.html"  class="nav-item active" id="nav-news">News</a>
+        <a href="games.html" class="nav-item" id="nav-games">Games</a>
+        <a href="about.html" class="nav-item" id="nav-about">About</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" id="search-btn" aria-label="Search">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="nav-icon-btn" id="bookmark-btn" aria-label="Bookmarks">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <button class="btn-subscribe" id="cta-subscribe">Subscribe</button>
+        <div class="lang-selector-container">
+          <button class="lang-selector" id="lang-selector-btn" aria-haspopup="listbox" aria-expanded="false">
+            <svg class="lang-globe-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/>
+            </svg>
+            <span class="lang-current">English</span>
+            <svg class="lang-chevron-icon" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </button>
+          <ul class="lang-dropdown" id="lang-dropdown-list" role="listbox">
+            <li class="lang-option active" data-lang="en" role="option" aria-selected="true">English</li>
+            <li class="lang-option" data-lang="hi" role="option" aria-selected="false">Hindi</li>
+            <li class="lang-option" data-lang="sa" role="option" aria-selected="false">Sanskrit</li>
+            <li class="lang-option" data-lang="ta" role="option" aria-selected="false">Tamil</li>
+            <li class="lang-option" data-lang="te" role="option" aria-selected="false">Telugu</li>
+            <li class="lang-option" data-lang="mr" role="option" aria-selected="false">Marathi</li>
+            <li class="lang-option" data-lang="bn" role="option" aria-selected="false">Bengali</li>
+            <li class="lang-option" data-lang="as" role="option" aria-selected="false">Assamese</li>
+            <li class="lang-option" data-lang="es" role="option" aria-selected="false">Spanish</li>
+            <li class="lang-option" data-lang="fr" role="option" aria-selected="false">French</li>
+          </ul>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="search-overlay" id="search-overlay">
+      <input type="text" id="search-input" placeholder="Search heritage stories, culture, places…" autocomplete="off" />
+      <button id="search-close">✕</button>
+    </div>
+  </header>
+
+  <!-- ══════════════ PAGE HERO ══════════════ -->
+  <section class="news-page-hero" id="news-page-hero">
+    <div class="container">
+      <div class="news-hero-content">
+        <div class="news-hero-text">
+          <span class="news-badge">📰 Editorial Dispatch</span>
+          <h1 class="news-hero-title">News Hub</h1>
+          <p class="news-hero-sub">Explore the full spectrum of India's living heritage — from archaeological breakthroughs to cultural festivals, arts, fashion, and food.</p>
+        </div>
+        <div class="news-hero-stats" id="news-hero-stats">
+          <div class="nh-stat">
+            <span class="nh-num">320+</span>
+            <span class="nh-label">Stories</span>
+          </div>
+          <div class="nh-stat">
+            <span class="nh-num">12</span>
+            <span class="nh-label">Categories</span>
+          </div>
+          <div class="nh-stat">
+            <span class="nh-num">Daily</span>
+            <span class="nh-label">Updates</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CATEGORY FILTERS ══════════════ -->
+  <div class="category-bar" id="category-bar">
+    <div class="container">
+      <div class="cat-filter-wrap" id="cat-filter-wrap">
+        <button class="cat-filter active" data-cat="all" id="filter-all">All</button>
+        <button class="cat-filter" data-cat="ancient" id="filter-ancient">Ancient Civilisations</button>
+        <button class="cat-filter" data-cat="heritage" id="filter-heritage">World Heritage</button>
+        <button class="cat-filter" data-cat="archaeology" id="filter-archaeology">Archaeology</button>
+        <button class="cat-filter" data-cat="culture" id="filter-culture">Culture</button>
+        <button class="cat-filter" data-cat="arts" id="filter-arts">Arts</button>
+        <button class="cat-filter" data-cat="fashion" id="filter-fashion">Fashion Fusion</button>
+        <button class="cat-filter" data-cat="food" id="filter-food">Food Fusion</button>
+        <button class="cat-filter" data-cat="spirituality" id="filter-spirituality">Ancient Spirituality</button>
+        <button class="cat-filter" data-cat="cultural-heritage" id="filter-cultural-heritage">Cultural Heritage</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SORT + RESULTS COUNT ══════════════ -->
+  <div class="news-toolbar" id="news-toolbar">
+    <div class="container">
+      <div class="toolbar-inner">
+        <span class="result-count" id="result-count"><strong id="count-num">13</strong> stories found</span>
+        <div class="toolbar-right">
+          <label class="sort-label" for="sort-select">Sort by:</label>
+          <select class="sort-select" id="sort-select">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="popular">Most Popular</option>
+            <option value="readtime">Read Time</option>
+          </select>
+          <div class="view-toggle" id="view-toggle">
+            <button class="view-btn active" id="grid-view-btn" aria-label="Grid view">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </button>
+            <button class="view-btn" id="list-view-btn" aria-label="List view">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="3" rx="1"/><rect x="3" y="10.5" width="18" height="3" rx="1"/><rect x="3" y="17" width="18" height="3" rx="1"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ NEWS GRID ══════════════ -->
+  <main class="news-main" id="news-main">
+    <div class="container">
+      <div class="news-grid" id="news-grid">
+
+        <!-- Article 1 -->
+        <article class="news-card" data-cat="archaeology" id="article-1">
+          <div class="nc-img-wrap">
+            <img src="images/news_tajmahal.png" alt="Taj Mahal Archaeological Discoveries" loading="lazy" />
+            <span class="nc-tag archaeology">Archaeology</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Secrets Beneath the Taj Mahal: New Archaeological Discoveries in Agra</h2>
+            <p class="nc-excerpt">Scientists using ground-penetrating radar have located a network of sealed chambers beneath the iconic monument, sparking a new wave of research.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#c0705a;">PR</div>
+                <span class="nc-author-name">Priya Raghavan</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">July 5, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">6 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="news-card" data-cat="ancient" id="article-2">
+          <div class="nc-img-wrap">
+            <img src="images/story1.png" alt="Khajuraho Sacred Geometry" loading="lazy" />
+            <span class="nc-tag ancient">Ancient Civilisations</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">The Sacred Geometry of Khajuraho: Mathematics Hidden in Stone</h2>
+            <p class="nc-excerpt">Researchers decode the astonishing mathematical precision behind Khajuraho's temple plans — a geometry that predates Euclidean mathematics by centuries.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#5a7ac0;">AM</div>
+                <span class="nc-author-name">Arjun Menon</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">July 4, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">8 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="news-card" data-cat="arts" id="article-3">
+          <div class="nc-img-wrap">
+            <img src="images/story2.png" alt="Ajanta Cave Art Restoration" loading="lazy" />
+            <span class="nc-tag arts">Arts</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Restoring Ajanta's Hidden Pigments: The True Colors of Indian Cave Art</h2>
+            <p class="nc-excerpt">Using AI-enhanced imaging, conservators reveal the original, vivid palette of 2,000-year-old Ajanta murals that time had obscured.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#5ac08a;">MN</div>
+                <span class="nc-author-name">Dr. Meera Nair</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">July 4, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">5 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="news-card" data-cat="heritage" id="article-4">
+          <div class="nc-img-wrap">
+            <img src="images/story3.png" alt="Hampi Drone Views" loading="lazy" />
+            <span class="nc-tag heritage">World Heritage</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Hampi From Above: Drone Views Reveal the Lost Grandeur of Vijayanagara</h2>
+            <p class="nc-excerpt">LIDAR mapping uncovers a 3 km extension of Vijayanagara city walls — reshaping our understanding of the empire at its peak.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#c07a5a;">RK</div>
+                <span class="nc-author-name">Ravi Kumar</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">July 3, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">7 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="news-card" data-cat="ancient" id="article-5">
+          <div class="nc-img-wrap">
+            <img src="images/news_stepwell.png" alt="Rajasthan Stepwells" loading="lazy" />
+            <span class="nc-tag ancient">Ancient Civilisations</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Stepwells of Rajasthan: India's Vanishing Water Architecture</h2>
+            <p class="nc-excerpt">These intricate, multi-storied water management systems once sustained entire desert cities — now conservationists race to save them.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#7a5ac0;">SG</div>
+                <span class="nc-author-name">Sneha Gupta</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">July 3, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">6 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 6 -->
+        <article class="news-card" data-cat="archaeology" id="article-6">
+          <div class="nc-img-wrap">
+            <img src="images/spotlight1.png" alt="Indus Valley Script" loading="lazy" />
+            <span class="nc-tag archaeology">Archaeology</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Deciphering the Indus Script: 5,000 Years of Mystery May Soon Be Solved</h2>
+            <p class="nc-excerpt">A Cambridge-IIT collaboration using AI pattern recognition has made the closest breakthrough yet toward reading the undeciphered Indus Valley writing system.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#c05a5a;">AK</div>
+                <span class="nc-author-name">Aisha Khan</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">July 2, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">9 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 7 -->
+        <article class="news-card" data-cat="cultural-heritage" id="article-7">
+          <div class="nc-img-wrap">
+            <img src="images/news_bollywood.png" alt="Bollywood Cultural Heritage" loading="lazy" />
+            <span class="nc-tag cultural-heritage">Cultural Heritage</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">How Bollywood Is Redefining Global Perceptions of Indian Culture</h2>
+            <p class="nc-excerpt">From Mumbai film sets to international awards, Indian cinema has become the world's most powerful lens through which India is seen and celebrated globally.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#5a8ec0;">PB</div>
+                <span class="nc-author-name">Priya Bhat</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">July 2, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">5 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 8 -->
+        <article class="news-card" data-cat="food" id="article-8">
+          <div class="nc-img-wrap">
+            <img src="images/news_streetfood.png" alt="Indian Street Food" loading="lazy" />
+            <span class="nc-tag food">Food Fusion</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">India's Street Food Meets Fine Dining: Michelin's New Indian Moment</h2>
+            <p class="nc-excerpt">Chefs across Mumbai and Delhi are translating centuries-old street recipes into Michelin-worthy tasting menus, creating a new chapter in Indian culinary heritage.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#c09a5a;">KM</div>
+                <span class="nc-author-name">Kavya Menon</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">July 1, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">4 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 9 -->
+        <article class="news-card" data-cat="arts" id="article-9">
+          <div class="nc-img-wrap">
+            <img src="images/spotlight2.png" alt="Carnatic vs Hindustani Music" loading="lazy" />
+            <span class="nc-tag arts">Arts</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Carnatic vs Hindustani: The Twin Rivers of Indian Classical Music</h2>
+            <p class="nc-excerpt">An in-depth exploration of how two distinct traditions share the same ancient roots but evolved into entirely different worlds of sound and expression.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#5ac0b0;">NR</div>
+                <span class="nc-author-name">Nisha Rao</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">July 1, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">7 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 10 -->
+        <article class="news-card" data-cat="culture" id="article-10">
+          <div class="nc-img-wrap">
+            <img src="images/spotlight3.png" alt="Navratri Festival" loading="lazy" />
+            <span class="nc-tag culture">Culture</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Navratri 2026: The Festival That Stopped Time</h2>
+            <p class="nc-excerpt">This year's Navratri drew over 2 million dancers across Gujarat alone — making it the largest Garba gathering ever recorded in Indian history.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#c0705a;">PR</div>
+                <span class="nc-author-name">Priya Raghavan</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">June 30, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">4 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 11 -->
+        <article class="news-card" data-cat="culture" id="article-11">
+          <div class="nc-img-wrap">
+            <img src="images/spotlight1.png" alt="Bharatanatyam Goes Global" loading="lazy" />
+            <span class="nc-tag culture">Culture</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Bharatanatyam Goes Global: A Traditional Dance That Wowed Paris</h2>
+            <p class="nc-excerpt">The ancient Tamil temple dance form electrified audiences at the Paris Opera House in its most celebrated international debut — changing the global conversation on Indian arts.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#7a5ac0;">SM</div>
+                <span class="nc-author-name">Sita Menon</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">June 29, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">6 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 12 -->
+        <article class="news-card" data-cat="spirituality" id="article-12">
+          <div class="nc-img-wrap">
+            <img src="images/news_ghat.png" alt="Varanasi Sacred Ghats" loading="lazy" />
+            <span class="nc-tag spirituality">Ancient Spirituality</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Sacred Ghats: Morning Rituals That Bind Generations</h2>
+            <p class="nc-excerpt">At Varanasi's riverbank, a daily ritual practiced for over 3,000 years connects India's oldest living spiritual tradition to its youngest generation of devotees.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#5a8ec0;">VK</div>
+                <span class="nc-author-name">Vikram Kaul</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">June 28, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">5 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 13 -->
+        <article class="news-card news-card--wide" data-cat="fashion" id="article-13">
+          <div class="nc-img-wrap">
+            <img src="images/fashion_main.png" alt="Indian Fashion Paris" loading="lazy" />
+            <span class="nc-tag fashion">Fashion Fusion</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Ravi Shankar's Global Legacy: How the Sitar Changed Western Music</h2>
+            <p class="nc-excerpt">From the Beatles to Philip Glass — revisiting how one Indian maestro's instrument and vision permanently reshaped the course of Western popular and classical music.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#c05a5a;">NG</div>
+                <span class="nc-author-name">Nisha Gupta</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">June 27, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">10 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /news-grid -->
+
+      <!-- No Results -->
+      <div class="no-results" id="no-results" style="display:none;">
+        <div class="no-results-icon">🔍</div>
+        <h3>No stories found</h3>
+        <p>Try selecting a different category or check back later for new articles.</p>
+        <button class="btn-reset-filter" id="btn-reset-filter">Show All Stories</button>
+      </div>
+
+      <!-- Load More -->
+      <div class="load-more-wrap" id="load-more-wrap">
+        <button class="btn-load-more" id="btn-load-more">
+          <span class="lm-text">Load More Stories</span>
+          <span class="lm-icon">↓</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand" id="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <span class="logo-heri">HeriTej</span><span class="logo-pulse">Pulse</span>
+          </a>
+          <p class="footer-tagline">Preserving India's past. Celebrating its present. Inspiring its future.</p>
+          <div class="footer-socials">
+            <a href="#" class="fsoc" id="fsoc-ig" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg>
+            </a>
+            <a href="#" class="fsoc" id="fsoc-x" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="fsoc" id="fsoc-yt" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23 6.685a3 3 0 0 0-2.11-2.124C19.067 4 12 4 12 4s-7.067 0-8.89.561A3 3 0 0 0 1 6.685C.5 8.52.5 12 .5 12s0 3.48.5 5.315a3 3 0 0 0 2.11 2.124C4.933 20 12 20 12 20s7.067 0 8.89-.561A3 3 0 0 0 23 17.315C23.5 15.48 23.5 12 23.5 12s-.5-3.48-1.5-5.315zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col" id="footer-sections">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="#" id="fc-heritage">Heritage</a></li>
+            <li><a href="#" id="fc-culture">Culture &amp; Arts</a></li>
+            <li><a href="#" id="fc-travel">Travel</a></li>
+            <li><a href="#" id="fc-food">Food Stories</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" id="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#" id="fc-about">About Us</a></li>
+            <li><a href="#" id="fc-contact">Contact</a></li>
+            <li><a href="#" id="fc-advertise">Advertise</a></li>
+            <li><a href="#" id="fc-careers">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" id="footer-legal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#" id="fc-privacy">Privacy Policy</a></li>
+            <li><a href="#" id="fc-terms">Terms of Use</a></li>
+            <li><a href="#" id="fc-cookie">Cookie Policy</a></li>
+            <li><a href="#" id="fc-sitemap">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom" id="footer-bottom">
+        <p>© 2026 HeriTej Pulse. All rights reserved. Made with 🩷 for India's heritage.</p>
+        <p class="footer-credit">Celebrating 5 years of cultural journalism</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- Google Translate Container (Hidden off-screen) -->
+  <div id="google_translate_element"></div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,sa,ta,te,mr,bn,as,es,fr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script src="script.js"></script>
+  <script src="news-script.js"></script>
+  <!-- Chatbot Script -->
+  <script src="chatbot.js"></script>
+  <!-- AI Features Script -->
+  <script src="ai-features.js"></script>
+</body>
+</html>

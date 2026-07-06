@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Dynamic Preloader -->
+  <script src="preloader.js"></script>
+  <meta name="description" content="About HeriTej Pulse — Preserving the pulse of humanity by making world heritage accessible, authoritative, and deeply engaging." />
+  <title>About Us | HeriTej Pulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="about.css" />
+  <!-- Chatbot CSS -->
+  <link rel="stylesheet" href="chatbot.css" />
+  <!-- Google Translate File Origin / CORS relative-protocol Fix -->
+  <script type="text/javascript">
+    (function() {
+      const origCE = document.createElement;
+      document.createElement = function(tag, options) {
+        const el = origCE.call(document, tag, options);
+        const t = tag.toLowerCase();
+        if (t === 'script' || t === 'iframe') {
+          const desc = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src') || 
+                       Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype, 'src') ||
+                       Object.getOwnPropertyDescriptor(Element.prototype, 'src');
+          Object.defineProperty(el, 'src', {
+            set: function(v) {
+              if (typeof v === 'string') {
+                if (v.startsWith('//')) v = 'https:' + v;
+                else if (v.startsWith('file://translate.')) v = v.replace('file://', 'https://');
+              }
+              if (desc && desc.set) desc.set.call(this, v);
+              else this.setAttribute('src', v);
+            },
+            get: function() {
+              return desc && desc.get ? desc.get.call(this) : this.getAttribute('src');
+            },
+            configurable: true
+          });
+        } else if (t === 'link') {
+          const desc = Object.getOwnPropertyDescriptor(HTMLLinkElement.prototype, 'href') ||
+                       Object.getOwnPropertyDescriptor(Element.prototype, 'href');
+          Object.defineProperty(el, 'href', {
+            set: function(v) {
+              if (typeof v === 'string') {
+                if (v.startsWith('//')) v = 'https:' + v;
+                else if (v.startsWith('file://translate.')) v = v.replace('file://', 'https://');
+              }
+              if (desc && desc.set) desc.set.call(this, v);
+              else this.setAttribute('href', v);
+            },
+            get: function() {
+              return desc && desc.get ? desc.get.call(this) : this.getAttribute('href');
+            },
+            configurable: true
+          });
+        }
+        return el;
+      };
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ══════════════ BREAKING BAR ══════════════ -->
+  <div class="article-topbar" id="topbar">
+    <div class="atb-inner">
+      <span class="atb-breaking">ABOUT</span>
+      <span class="atb-title">To preserve the pulse of humanity by making world heritage accessible</span>
+      <div class="atb-right">
+        <span id="atb-date"></span>
+        <span class="atb-sep">·</span>
+        <span>18 Stories Today</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <div class="nav-logo">
+        <a href="index.html" id="logo-link">
+          <span class="logo-heri">HeriTej</span><span class="logo-pulse">Pulse</span>
+        </a>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-item" id="nav-home">Home</a>
+        <a href="news.html"  class="nav-item" id="nav-news">News</a>
+        <a href="games.html" class="nav-item" id="nav-games">Games</a>
+        <a href="about.html" class="nav-item active" id="nav-about">About</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" id="search-btn" aria-label="Search">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="nav-icon-btn" id="bookmark-btn" aria-label="Bookmarks">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <div class="lang-selector-container">
+          <button class="lang-selector" id="lang-selector-btn" aria-haspopup="listbox" aria-expanded="false">
+            <svg class="lang-globe-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/>
+            </svg>
+            <span class="lang-current">English</span>
+            <svg class="lang-chevron-icon" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </button>
+          <ul class="lang-dropdown" id="lang-dropdown-list" role="listbox">
+            <li class="lang-option active" data-lang="en" role="option" aria-selected="true">English</li>
+            <li class="lang-option" data-lang="hi" role="option" aria-selected="false">Hindi</li>
+            <li class="lang-option" data-lang="sa" role="option" aria-selected="false">Sanskrit</li>
+            <li class="lang-option" data-lang="ta" role="option" aria-selected="false">Tamil</li>
+            <li class="lang-option" data-lang="te" role="option" aria-selected="false">Telugu</li>
+            <li class="lang-option" data-lang="mr" role="option" aria-selected="false">Marathi</li>
+            <li class="lang-option" data-lang="bn" role="option" aria-selected="false">Bengali</li>
+            <li class="lang-option" data-lang="as" role="option" aria-selected="false">Assamese</li>
+            <li class="lang-option" data-lang="es" role="option" aria-selected="false">Spanish</li>
+            <li class="lang-option" data-lang="fr" role="option" aria-selected="false">French</li>
+          </ul>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="search-overlay" id="search-overlay">
+      <input type="text" id="search-input" placeholder="Search heritage stories…" autocomplete="off" />
+      <button id="search-close">✕</button>
+    </div>
+  </header>
+
+  <!-- ══════════════ HERO SECTION (DARK QUOTE) ══════════════ -->
+  <section class="about-hero" id="about-hero">
+    <div class="container">
+      <div class="about-hero-quote">
+        <blockquote class="hero-quote-text">
+          "To preserve the pulse of humanity by making world heritage accessible, authoritative, and deeply engaging for the global citizen."
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ MAIN CONTENT ══════════════ -->
+  <main class="about-main" id="about-main">
+    <div class="container">
+      <div class="about-grid">
+        
+        <!-- Story section -->
+        <section class="about-story" id="about-story">
+          <h2 class="about-section-title">The HeriTej Pulse Story</h2>
+          <div class="about-story-text">
+            <p>Founded on the belief that understanding our past is crucial to navigating our future, HeriTej Pulse merges the rigorous journalistic standards of traditional broadcasting with the interactive possibilities of modern technology. We are a digital sanctuary where history is not merely archived, but actively experienced.</p>
+            <p>What began as a small initiative to digitize museum archives has grown into the world's premier platform for cultural storytelling. Our team of historians, journalists, and game designers work tirelessly to bring ancient civilizations to life, ensuring that the legacy of our ancestors remains a vibrant part of our daily discourse.</p>
+          </div>
+        </section>
+
+        <!-- Editorial Values section -->
+        <section class="about-values" id="about-values">
+          <h2 class="about-section-title">Editorial Values</h2>
+          <div class="values-grid">
+            
+            <div class="value-card" id="value-1">
+              <h3 class="value-title">Authoritative Accuracy</h3>
+              <p class="value-desc">We partner with leading academic institutions and archaeologists. Every article is fact-checked against primary sources and peer-reviewed research. We do not compromise on the truth.</p>
+            </div>
+            
+            <div class="value-card" id="value-2">
+              <h3 class="value-title">Engaging Education</h3>
+              <p class="value-desc">Learning about history should not feel like reading a dusty textbook. Through our interactive games and immersive media, we make education an active, entertaining pursuit.</p>
+            </div>
+            
+            <div class="value-card" id="value-3">
+              <h3 class="value-title">Global Perspective</h3>
+              <p class="value-desc">Heritage belongs to all of humanity. We are committed to highlighting diverse cultures and civilizations, ensuring equitable representation across all our platforms.</p>
+            </div>
+            
+            <div class="value-card" id="value-4">
+              <h3 class="value-title">Preservation via Digitalization</h3>
+              <p class="value-desc">Physical monuments may erode, but digital records endure. We view our platform as a modern archive, safeguarding human achievements for generations to come.</p>
+            </div>
+            
+          </div>
+        </section>
+
+        <!-- Contact section -->
+        <section class="about-contact" id="about-contact">
+          <h2 class="about-section-title">Contact the Newsroom</h2>
+          <p class="contact-intro">Have a story tip regarding a recent archaeological discovery? Want to partner with our interactive team? Reach out to us.</p>
+          <div class="contact-box">
+            <div class="contact-item">
+              <span class="contact-label">editor@heritejpulse.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">arcade@heritejpulse.com</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand" id="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <span class="logo-heri">HeriTej</span><span class="logo-pulse">Pulse</span>
+          </a>
+          <p class="footer-tagline">The world's premier heritage media platform. Explore the past, understand the present.</p>
+          <div class="footer-socials">
+            <a href="#" class="fsoc" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg>
+            </a>
+            <a href="#" class="fsoc" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="fsoc" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23 6.685a3 3 0 0 0-2.11-2.124C19.067 4 12 4 12 4s-7.067 0-8.89.561A3 3 0 0 0 1 6.685C.5 8.52.5 12 .5 12s0 3.48.5 5.315a3 3 0 0 0 2.11 2.124C4.933 20 12 20 12 20s7.067 0 8.89-.561A3 3 0 0 0 23 17.315C23.5 15.48 23.5 12 23.5 12s-.5-3.48-1.5-5.315zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col" id="footer-sections">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="news.html">News Hub</a></li>
+            <li><a href="games.html">Games Arcade</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" id="footer-games">
+          <h4>Games</h4>
+          <ul>
+            <li><a href="#">Heritage Quiz</a></li>
+            <li><a href="#">Word Puzzle</a></li>
+            <li><a href="#">Trivia Blitz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" id="footer-legal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom" id="footer-bottom">
+        <p>© 2026 HeriTej Pulse Media. All rights reserved.</p>
+        <p class="footer-credit">"Preserving the Pulse of Humanity"</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- Google Translate Container (Hidden off-screen) -->
+  <div id="google_translate_element"></div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,sa,ta,te,mr,bn,as,es,fr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script src="about-script.js"></script>
+  <!-- Chatbot Script -->
+  <script src="chatbot.js"></script>
+</body>
+</html>

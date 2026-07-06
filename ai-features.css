@@ -1,0 +1,273 @@
+/* ═══════════════════════════════════════════════════
+   HERITEJ PULSE — ai-features.css
+   ═══════════════════════════════════════════════════ */
+
+/* ── AI Summarizer Modal ────────────────────────── */
+.ai-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(31,36,33,0.6);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.ai-modal-overlay.open {
+  opacity: 1; pointer-events: all;
+}
+.ai-modal-card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  width: 90%; max-width: 580px;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--clr-border);
+  overflow: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ai-modal-overlay.open .ai-modal-card {
+  transform: translateY(0) scale(1);
+}
+.ai-modal-header {
+  background: linear-gradient(135deg, var(--clr-primary) 0%, #7d1c1d 100%);
+  color: #ffffff;
+  padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.aim-title-wrap {
+  display: flex; align-items: center; gap: 10px;
+}
+.aim-title-icon {
+  font-size: 1.25rem;
+  animation: pulse-glow 2s ease infinite;
+}
+.ai-modal-header h3 {
+  font-family: var(--ff-ui);
+  font-size: 1.05rem; font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.ai-modal-close {
+  background: none; border: none;
+  color: rgba(255,255,255,0.8);
+  font-size: 1.2rem; cursor: pointer;
+  transition: color 0.2s;
+}
+.ai-modal-close:hover {
+  color: #ffffff;
+}
+.ai-modal-body {
+  padding: 24px;
+  max-height: 80vh; overflow-y: auto;
+  font-family: var(--ff-body);
+  color: var(--clr-text);
+}
+
+/* AI Loading State */
+.ai-loading-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 40px 0; text-align: center;
+}
+.ai-pulse-core {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: rgba(158,42,43,0.1);
+  border: 2px solid var(--clr-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  position: relative;
+  margin-bottom: 20px;
+  animation: core-pulse 1.5s ease-in-out infinite;
+}
+.ai-pulse-core::after {
+  content: ''; position: absolute; inset: -8px;
+  border-radius: 50%;
+  border: 1px dashed var(--clr-primary-lt);
+  animation: spin-clockwise 6s linear infinite;
+}
+.ai-loading-text {
+  font-family: var(--ff-ui);
+  font-size: 0.88rem; font-weight: 600;
+  color: var(--clr-primary);
+}
+
+/* AI Content Styling */
+.ai-summary-bullets {
+  display: flex; flex-direction: column; gap: 14px;
+  margin-bottom: 20px;
+}
+.ai-bullet-item {
+  display: flex; gap: 12px;
+  background: var(--clr-bg);
+  border-left: 3px solid var(--clr-primary);
+  padding: 12px 16px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.88rem; line-height: 1.5;
+}
+.aib-label {
+  font-family: var(--ff-ui); font-weight: 700;
+  color: var(--clr-primary); min-width: 80px; flex-shrink: 0;
+}
+.ai-insights-box {
+  background: var(--clr-bg-alt);
+  border: 1px dashed var(--clr-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.82rem; line-height: 1.55;
+  color: var(--clr-text-muted);
+}
+
+/* ── AI Trivia Oracle Widget ────────────────────── */
+.ai-oracle-widget {
+  background: #ffffff;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.3s;
+}
+.ai-oracle-widget::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--clr-primary) 0%, var(--clr-accent) 100%);
+}
+.aio-header {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 12px;
+}
+.aio-icon {
+  font-size: 1.1rem;
+  animation: pulse-glow 2s infinite;
+}
+.ai-oracle-widget h3 {
+  font-family: var(--ff-ui);
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--clr-dark);
+}
+.aio-intro {
+  font-size: 0.82rem; color: var(--clr-text-muted);
+  line-height: 1.45; margin-bottom: 14px;
+}
+.aio-cats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 6px; margin-bottom: 16px;
+}
+.aio-cat-btn {
+  font-family: var(--ff-ui); font-size: 0.68rem; font-weight: 600;
+  padding: 6px 4px; border-radius: 6px;
+  background: var(--clr-bg);
+  border: 1.5px solid var(--clr-border);
+  color: var(--clr-text-muted);
+  cursor: pointer; transition: all 0.2s;
+  text-align: center;
+}
+.aio-cat-btn:hover {
+  background: var(--clr-bg-alt);
+}
+.aio-cat-btn.active {
+  background: var(--clr-tag-bg);
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+}
+.aio-gen-btn {
+  width: 100%; padding: 10px;
+  background: var(--clr-primary); color: #ffffff;
+  border-radius: var(--radius-sm);
+  font-family: var(--ff-ui); font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; text-align: center;
+  transition: background 0.2s;
+  box-shadow: 0 4px 12px rgba(158,42,43,0.15);
+}
+.aio-gen-btn:hover {
+  background: var(--clr-primary-lt);
+}
+
+/* Oracle Game States */
+.aio-loader {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 24px 0; text-align: center;
+}
+.aio-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--clr-border);
+  border-top-color: var(--clr-primary);
+  border-radius: 50%;
+  animation: spin-clockwise 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+.aio-loader-text {
+  font-family: var(--ff-ui); font-size: 0.78rem;
+  color: var(--clr-primary); font-weight: 600;
+}
+.aio-q-text {
+  font-family: var(--ff-body); font-size: 0.88rem; font-weight: 600;
+  color: var(--clr-dark); line-height: 1.45;
+  margin-bottom: 12px;
+}
+.aio-opts-list {
+  display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: 14px;
+}
+.aio-opt-btn {
+  width: 100%; text-align: left;
+  padding: 10px 14px; border-radius: var(--radius-sm);
+  background: var(--clr-bg); border: 1.5px solid var(--clr-border);
+  font-family: var(--ff-body); font-size: 0.8rem;
+  color: var(--clr-text); cursor: pointer; transition: all 0.2s;
+}
+.aio-opt-btn:hover:not(:disabled) {
+  border-color: var(--clr-primary);
+  background: rgba(158,42,43,0.02);
+}
+.aio-opt-btn.correct {
+  background: rgba(46,139,87,0.08) !important;
+  border-color: #2e8b57 !important;
+  color: #1a5c2e !important;
+}
+.aio-opt-btn.wrong {
+  background: rgba(229,62,30,0.06) !important;
+  border-color: #e53e1e !important;
+  color: #e53e1e !important;
+}
+.aio-explanation {
+  background: var(--clr-bg-alt);
+  border-left: 3px solid var(--clr-accent);
+  padding: 10px 14px; border-radius: 0 8px 8px 0;
+  font-size: 0.76rem; line-height: 1.5;
+  color: var(--clr-text-muted);
+  margin-bottom: 14px;
+  animation: fade-in 0.3s ease;
+}
+
+/* ── Inline Card Button ─────────────────────────── */
+.ai-card-action {
+  border-top: 1px solid var(--clr-border);
+  padding-top: 12px; margin-top: 12px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ai-summary-link {
+  font-family: var(--ff-ui); font-size: 0.72rem; font-weight: 700;
+  color: var(--clr-primary); display: inline-flex; align-items: center; gap: 4px;
+  cursor: pointer; padding: 4px 0; transition: color 0.2s;
+}
+.ai-summary-link:hover {
+  color: var(--clr-primary-lt);
+}
+
+/* ── Keyframe Animations ────────────────────────── */
+@keyframes core-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(158,42,43,0.4); }
+  50% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(158,42,43,0); }
+}
+@keyframes spin-clockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 1px var(--clr-primary)); }
+  50% { filter: drop-shadow(0 0 8px var(--clr-primary-lt)); }
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

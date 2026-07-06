@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════════════
+   HERITEJ PULSE — about.css
+   ═══════════════════════════════════════════════════ */
+
+/* ── Article Top Bar (reuse) ──────────────────────── */
+.article-topbar {
+  background: var(--clr-primary); height: 34px;
+  display: flex; align-items: center; overflow: hidden;
+}
+.atb-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 24px;
+  width: 100%; display: flex; align-items: center; gap: 12px;
+}
+.atb-breaking {
+  background: var(--clr-dark); color: var(--clr-accent);
+  font-family: var(--ff-ui); font-size: 0.65rem; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 3px; flex-shrink: 0;
+}
+.atb-title {
+  font-family: var(--ff-ui); font-size: 0.78rem;
+  color: rgba(255,255,255,0.95); flex: 1;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500;
+}
+.atb-right {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--ff-ui); font-size: 0.72rem;
+  color: rgba(255,255,255,0.75); flex-shrink: 0; white-space: nowrap;
+}
+.atb-sep { opacity: 0.4; }
+
+
+/* ═══════════════ ABOUT HERO (DARK QUOTE) ═══════════════ */
+.about-hero {
+  background: #23201d;
+  color: #fff;
+  padding: 80px 0;
+  position: relative;
+}
+.about-hero-quote {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 28px;
+  border-left: 3px solid var(--clr-primary);
+}
+.hero-quote-text {
+  font-family: var(--ff-head);
+  font-size: clamp(1.3rem, 2.5vw, 1.85rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ═══════════════ MAIN CONTENT AREA ═══════════════ */
+.about-main {
+  padding: 60px 0 80px;
+  background: var(--clr-bg);
+}
+.about-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Common Section Title */
+.about-section-title {
+  font-family: var(--ff-head);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--clr-dark);
+  margin-bottom: 24px;
+}
+
+/* ── Story Section ── */
+.about-story-text p {
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--clr-text);
+  margin-bottom: 20px;
+}
+.about-story-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Values Section ── */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.value-card {
+  background: var(--clr-white);
+  padding: 28px;
+  border-radius: var(--radius-sm);
+  border-top: 3px solid var(--clr-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+}
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.value-title {
+  font-family: var(--ff-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--clr-dark);
+  margin-bottom: 12px;
+}
+.value-desc {
+  font-family: var(--ff-body);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--clr-text-muted);
+}
+
+/* ── Contact Section ── */
+.contact-intro {
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  color: var(--clr-text);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.contact-box {
+  background: #23201d;
+  border-radius: var(--radius-sm);
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+}
+.contact-label {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 1.05rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+.contact-label:hover {
+  color: var(--clr-accent);
+  cursor: pointer;
+}
+
+/* ── Entrance Animations ── */
+.about-story, .value-card, .about-contact {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: aboutFadeIn 0.5s ease forwards;
+}
+.about-story { animation-delay: 0.1s; }
+.value-card:nth-child(1) { animation-delay: 0.2s; }
+.value-card:nth-child(2) { animation-delay: 0.25s; }
+.value-card:nth-child(3) { animation-delay: 0.3s; }
+.value-card:nth-child(4) { animation-delay: 0.35s; }
+.about-contact { animation-delay: 0.4s; }
+
+@keyframes aboutFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-hero {
+    padding: 60px 0;
+  }
+  .about-main {
+    padding: 40px 0 60px;
+  }
+  .contact-box {
+    padding: 24px 30px;
+  }
+}

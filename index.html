@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Dynamic Preloader -->
+  <script src="preloader.js"></script>
+  <meta name="description" content="HeriTej Pulse — India's premier heritage and culture news platform. Explore stories on art, history, fashion, festivals, and more." />
+  <title>HeriTej Pulse | India's Heritage News Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chatbot CSS -->
+  <link rel="stylesheet" href="chatbot.css" />
+  <!-- AI Features CSS -->
+  <link rel="stylesheet" href="ai-features.css" />
+  <!-- Google Translate File Origin / CORS relative-protocol Fix -->
+  <script type="text/javascript">
+    (function() {
+      const origCE = document.createElement;
+      document.createElement = function(tag, options) {
+        const el = origCE.call(document, tag, options);
+        const t = tag.toLowerCase();
+        if (t === 'script' || t === 'iframe') {
+          const desc = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src') || 
+                       Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype, 'src') ||
+                       Object.getOwnPropertyDescriptor(Element.prototype, 'src');
+          Object.defineProperty(el, 'src', {
+            set: function(v) {
+              if (typeof v === 'string') {
+                if (v.startsWith('//')) v = 'https:' + v;
+                else if (v.startsWith('file://translate.')) v = v.replace('file://', 'https://');
+              }
+              if (desc && desc.set) desc.set.call(this, v);
+              else this.setAttribute('src', v);
+            },
+            get: function() {
+              return desc && desc.get ? desc.get.call(this) : this.getAttribute('src');
+            },
+            configurable: true
+          });
+        } else if (t === 'link') {
+          const desc = Object.getOwnPropertyDescriptor(HTMLLinkElement.prototype, 'href') ||
+                       Object.getOwnPropertyDescriptor(Element.prototype, 'href');
+          Object.defineProperty(el, 'href', {
+            set: function(v) {
+              if (typeof v === 'string') {
+                if (v.startsWith('//')) v = 'https:' + v;
+                else if (v.startsWith('file://translate.')) v = v.replace('file://', 'https://');
+              }
+              if (desc && desc.set) desc.set.call(this, v);
+              else this.setAttribute('href', v);
+            },
+            get: function() {
+              return desc && desc.get ? desc.get.call(this) : this.getAttribute('href');
+            },
+            configurable: true
+          });
+        }
+        return el;
+      };
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ══════════════════════════ TOP BAR ══════════════════════════ -->
+  <div class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-ticker" id="topbar-ticker">
+        🏛️ Nalanda University celebrates 15th year of revival &nbsp;&nbsp;|&nbsp;&nbsp;
+        🎨 India's textile exports hit record ₹3.5 lakh crore &nbsp;&nbsp;|&nbsp;&nbsp;
+        🎭 Kathakali named UNESCO Intangible Heritage &nbsp;&nbsp;|&nbsp;&nbsp;
+        🌿 Tiger reserves cover 75,796 sq km across India &nbsp;&nbsp;|&nbsp;&nbsp;
+        🪔 Diwali 2026 declared national cultural festival
+      </span>
+      <div class="topbar-right">
+        <span class="topbar-date" id="topbar-date"></span>
+        <a href="#" class="topbar-link">Subscribe</a>
+        <a href="#" class="topbar-link">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <div class="nav-logo">
+        <a href="index.html" id="logo-link">
+          <span class="logo-heri">HeriTej</span><span class="logo-pulse">Pulse</span>
+        </a>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-item active" id="nav-home">Home</a>
+        <a href="news.html"  class="nav-item" id="nav-news">News</a>
+        <a href="games.html" class="nav-item" id="nav-games">Games</a>
+        <a href="about.html" class="nav-item" id="nav-about">About</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" id="search-btn" aria-label="Search">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="nav-icon-btn" id="bookmark-btn" aria-label="Bookmarks">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <button class="btn-subscribe" id="cta-subscribe">Subscribe</button>
+        <div class="lang-selector-container">
+          <button class="lang-selector" id="lang-selector-btn" aria-haspopup="listbox" aria-expanded="false">
+            <svg class="lang-globe-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/>
+            </svg>
+            <span class="lang-current">English</span>
+            <svg class="lang-chevron-icon" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </button>
+          <ul class="lang-dropdown" id="lang-dropdown-list" role="listbox">
+            <li class="lang-option active" data-lang="en" role="option" aria-selected="true">English</li>
+            <li class="lang-option" data-lang="hi" role="option" aria-selected="false">Hindi</li>
+            <li class="lang-option" data-lang="sa" role="option" aria-selected="false">Sanskrit</li>
+            <li class="lang-option" data-lang="ta" role="option" aria-selected="false">Tamil</li>
+            <li class="lang-option" data-lang="te" role="option" aria-selected="false">Telugu</li>
+            <li class="lang-option" data-lang="mr" role="option" aria-selected="false">Marathi</li>
+            <li class="lang-option" data-lang="bn" role="option" aria-selected="false">Bengali</li>
+            <li class="lang-option" data-lang="as" role="option" aria-selected="false">Assamese</li>
+            <li class="lang-option" data-lang="es" role="option" aria-selected="false">Spanish</li>
+            <li class="lang-option" data-lang="fr" role="option" aria-selected="false">French</li>
+          </ul>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <!-- Search Bar -->
+    <div class="search-overlay" id="search-overlay">
+      <input type="text" id="search-input" placeholder="Search heritage stories, culture, places…" autocomplete="off" />
+      <button id="search-close">✕</button>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════ HERO SECTION ══════════════════════════ -->
+  <section class="hero-section" id="hero">
+    <div class="hero-grid">
+      <!-- Main Slider -->
+      <div class="hero-slider" id="hero-slider">
+        <div class="slide active" id="slide-1">
+          <img src="images/hero_banner.png" alt="Ancient Indian Heritage Architecture at Sunset" />
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-tag">Heritage</span>
+            <h1 class="slide-title">Stone and Spirit: The Geometry and Design of India's Sacred Architecture</h1>
+            <p class="slide-desc">An exploration of structural wonder and temple planning across Hampi, Khajuraho, and the southern monumental spires.</p>
+            <div class="slide-meta">
+              <span class="slide-author">By Priya Raghavan</span>
+              <span class="slide-dot">•</span>
+              <span class="slide-time">July 5, 2026</span>
+              <span class="slide-dot">•</span>
+              <span class="slide-read">8 min read</span>
+            </div>
+            <button class="btn-read-story" id="hero-read-btn">Read Story →</button>
+          </div>
+        </div>
+        <div class="slide" id="slide-2">
+          <img src="images/story2.png" alt="Ajanta Cave Paintings" />
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-tag">Art</span>
+            <h1 class="slide-title">Ajanta Restored: Conserving 2,000-Year-Old Pigments</h1>
+            <p class="slide-desc">Advanced digital restoration reveals underlying drafts and original mineral pigments, offering new insights into early Buddhist art.</p>
+            <div class="slide-meta">
+              <span class="slide-author">By Dr. Meera Nair</span>
+              <span class="slide-dot">•</span>
+              <span class="slide-time">July 4, 2026</span>
+              <span class="slide-dot">•</span>
+              <span class="slide-read">6 min read</span>
+            </div>
+            <button class="btn-read-story" id="hero-read-btn-2">Read Story →</button>
+          </div>
+        </div>
+        <div class="slide" id="slide-3">
+          <img src="images/story3.png" alt="Hampi Ruins at Sunset" />
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-tag">History</span>
+            <h1 class="slide-title">The Footprints of Vijayanagara: Mapping Medieval Ruins</h1>
+            <p class="slide-desc">LIDAR mapping and structural studies reveal defensive engineering, water layouts, and urban design across Hampi's Deccan landscape.</p>
+            <div class="slide-meta">
+              <span class="slide-author">By Arjun Menon</span>
+              <span class="slide-dot">•</span>
+              <span class="slide-time">July 3, 2026</span>
+              <span class="slide-dot">•</span>
+              <span class="slide-read">10 min read</span>
+            </div>
+            <button class="btn-read-story" id="hero-read-btn-3">Read Story →</button>
+          </div>
+        </div>
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+          <button class="slider-btn prev" id="slider-prev" aria-label="Previous slide">‹</button>
+          <div class="slider-dots" id="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+          </div>
+          <button class="slider-btn next" id="slider-next" aria-label="Next slide">›</button>
+        </div>
+      </div>
+
+      <!-- Today in History Sidebar -->
+      <aside class="today-history" id="today-history">
+        <div class="tih-header">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <h2>Today in History</h2>
+        </div>
+        <div class="tih-list">
+          <div class="tih-item" id="tih-1">
+            <span class="tih-year">1853</span>
+            <p>India's first railway line inaugurated between Bombay and Thane, covering 34 km on April 16, marking the dawn of modern transportation.</p>
+          </div>
+          <div class="tih-item" id="tih-2">
+            <span class="tih-year">1947</span>
+            <p>Constituent Assembly of India adopts the national flag — the tricolour with Ashoka Chakra — symbolizing the nation's values of dharma and progress.</p>
+          </div>
+          <div class="tih-item" id="tih-3">
+            <span class="tih-year">1975</span>
+            <p>India launches its first satellite Aryabhata, named after the ancient mathematician, marking the beginning of India's space journey.</p>
+          </div>
+          <div class="tih-item" id="tih-4">
+            <span class="tih-year">2001</span>
+            <p>The Archaeological Survey of India uncovers one of the largest Bronze Age sites near Rakhigarhi, Haryana — rewriting Indus Valley timelines.</p>
+          </div>
+        </div>
+        <button class="tih-more" id="tih-more-btn">View Full History →</button>
+      </aside>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════ TOP STORIES ══════════════════════════ -->
+  <section class="top-stories" id="top-stories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Top Stories</h2>
+        <a href="#" class="section-more" id="top-stories-more">Read More →</a>
+      </div>
+      <div class="stories-grid" id="stories-grid">
+        <article class="story-card" id="story-card-1">
+          <div class="story-img-wrap">
+            <img src="images/story1.png" alt="Khajuraho Temples" />
+            <span class="story-tag">Heritage</span>
+          </div>
+          <div class="story-body">
+            <h3 class="story-headline">The Sacred Geometry of Khajuraho: Mathematics Hidden in the Temple Stones of Madhya Pradesh</h3>
+            <p class="story-excerpt">Researchers decode the astonishing mathematical precision behind Khajuraho's temple plans — a geometry that predates Euclidean mathematics by centuries.</p>
+            <div class="story-footer">
+              <span class="story-author">Priya Raghavan</span>
+              <span class="story-read-time">5 min</span>
+            </div>
+          </div>
+        </article>
+        <article class="story-card" id="story-card-2">
+          <div class="story-img-wrap">
+            <img src="images/story2.png" alt="Ajanta Ellora Caves" />
+            <span class="story-tag">Art</span>
+          </div>
+          <div class="story-body">
+            <h3 class="story-headline">Ravindra Sharma's Exhibition Presents The True Colors of Ancient Indian Art</h3>
+            <p class="story-excerpt">A landmark exhibition at NGMA uses AI-enhanced imaging to restore Ajanta murals to their original vibrancy, transforming how we see ancient Indian art.</p>
+            <div class="story-footer">
+              <span class="story-author">Dr. Meera Nair</span>
+              <span class="story-read-time">4 min</span>
+            </div>
+          </div>
+        </article>
+        <article class="story-card" id="story-card-3">
+          <div class="story-img-wrap">
+            <img src="images/story3.png" alt="Hampi Ruins" />
+            <span class="story-tag">History</span>
+          </div>
+          <div class="story-body">
+            <h3 class="story-headline">Hampi's Stone Chariot: Drone Views Reveal the Lost Extension of Vijayanagara</h3>
+            <p class="story-excerpt">Aerial surveys using LIDAR technology uncover a previously unmapped 3 km extension of the Vijayanagara city walls, reshaping the empire's known boundaries.</p>
+            <div class="story-footer">
+              <span class="story-author">Arjun Menon</span>
+              <span class="story-read-time">7 min</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ EXPLORE BY HERITAGE ══════════════════════════ -->
+  <section class="explore-heritage" id="explore-heritage">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Explore by Heritage</h2>
+        <a href="#" class="section-more" id="explore-more">Browse All →</a>
+      </div>
+      <div class="heritage-cats" id="heritage-cats">
+        <a href="#" class="cat-pill" id="cat-ancient">
+          <span class="cat-icon">🏛️</span>
+          <span class="cat-label">Ancient Civilisations</span>
+          <span class="cat-count">42</span>
+        </a>
+        <a href="#" class="cat-pill active" id="cat-classical">
+          <span class="cat-icon">🎭</span>
+          <span class="cat-label">Classical Arts</span>
+          <span class="cat-count">67</span>
+        </a>
+        <a href="#" class="cat-pill" id="cat-fairs">
+          <span class="cat-icon">🪔</span>
+          <span class="cat-label">Fairs &amp; Festivals</span>
+          <span class="cat-count">71</span>
+        </a>
+        <a href="#" class="cat-pill" id="cat-monuments">
+          <span class="cat-icon">🕌</span>
+          <span class="cat-label">Monuments</span>
+          <span class="cat-count">89</span>
+        </a>
+        <a href="#" class="cat-pill" id="cat-tribal">
+          <span class="cat-icon">🌿</span>
+          <span class="cat-label">Tribal Heritage</span>
+          <span class="cat-count">25</span>
+        </a>
+        <a href="#" class="cat-pill" id="cat-fashion">
+          <span class="cat-icon">🧵</span>
+          <span class="cat-label">Grand Textiles</span>
+          <span class="cat-count">31</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ INDIAN HERITAGE SPOTLIGHT ══════════════════════════ -->
+  <section class="spotlight-section" id="spotlight">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Indian Heritage Spotlight</h2>
+        <div class="spotlight-nav">
+          <button class="spot-btn" id="spot-prev" aria-label="Previous">‹</button>
+          <button class="spot-btn" id="spot-next" aria-label="Next">›</button>
+        </div>
+      </div>
+      <div class="spotlight-track-wrap">
+        <div class="spotlight-track" id="spotlight-track">
+          <div class="spotlight-card" id="spot-card-1">
+            <div class="spot-img-wrap">
+              <img src="images/spotlight1.png" alt="India's Street Food Heritage" />
+            </div>
+            <div class="spot-body">
+              <span class="spot-tag">Food</span>
+              <h3>Mapping the culinary roots of regional street food</h3>
+            </div>
+          </div>
+          <div class="spotlight-card" id="spot-card-2">
+            <div class="spot-img-wrap">
+              <img src="images/spotlight2.png" alt="Navratri Festival" />
+            </div>
+            <div class="spot-body">
+              <span class="spot-tag">Festivals</span>
+              <h3>Navratri: Rhythms and rituals of the nine nights</h3>
+            </div>
+          </div>
+          <div class="spotlight-card" id="spot-card-3">
+            <div class="spot-img-wrap">
+              <img src="images/story1.png" alt="Temple Architecture" />
+            </div>
+            <div class="spot-body">
+              <span class="spot-tag">Architecture</span>
+              <h3>Preserving the detail of rock-cut monolithic sculpture</h3>
+            </div>
+          </div>
+          <div class="spotlight-card" id="spot-card-4">
+            <div class="spot-img-wrap">
+              <img src="images/story3.png" alt="Vijayanagara Ruins" />
+            </div>
+            <div class="spot-body">
+              <span class="spot-tag">History</span>
+              <h3>Urban plans and canals of the Vijayanagara core</h3>
+            </div>
+          </div>
+          <div class="spotlight-card" id="spot-card-5">
+            <div class="spot-img-wrap">
+              <img src="images/fashion_main.png" alt="Indian Fashion Heritage" />
+            </div>
+            <div class="spot-body">
+              <span class="spot-tag">Fashion</span>
+              <h3>Banarasi Silk: The Fabric of Indian Royalty</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ QUOTE SECTION ══════════════════════════ -->
+  <section class="quote-section" id="quote-section">
+    <div class="container">
+      <div class="quote-card" id="quote-card">
+        <div class="quote-icon">"</div>
+        <blockquote class="quote-text" id="quote-text">
+          The ancient Nalanda University had a library of 9 million manuscripts — it burned for three months after being attacked in 1193 CE.
+        </blockquote>
+        <div class="quote-dots" id="quote-dots">
+          <span class="qdot active" data-q="0"></span>
+          <span class="qdot" data-q="1"></span>
+          <span class="qdot" data-q="2"></span>
+          <span class="qdot" data-q="3"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ FASHION FUSION ══════════════════════════ -->
+  <section class="fashion-section" id="fashion-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Fashion Fusion</h2>
+        <a href="#" class="section-more" id="fashion-more">Read More →</a>
+      </div>
+      <div class="fashion-grid" id="fashion-grid">
+        <article class="fashion-main-card" id="fashion-main-card">
+          <div class="fashion-main-img">
+            <img src="images/fashion_main.png" alt="Indian Fashion on Paris Runway" />
+            <div class="fashion-overlay"></div>
+            <div class="fashion-main-content">
+              <span class="fashion-tag">Fashion Week</span>
+              <h3>From Sarees to Runways: How Indian Textiles Are Taking Over Paris Fashion Week</h3>
+            </div>
+          </div>
+        </article>
+        <div class="fashion-side" id="fashion-side">
+          <article class="fashion-side-card" id="fashion-side-1">
+            <img src="images/story1.png" alt="Rajasthani Textiles" />
+            <div class="fashion-side-body">
+              <span class="fashion-tag-sm">Handicraft</span>
+              <h4>Block Print Renaissance: Rajasthani Artisans Making a Global Comeback</h4>
+              <span class="fashion-time">July 3, 2026</span>
+            </div>
+          </article>
+          <article class="fashion-side-card" id="fashion-side-2">
+            <img src="images/story2.png" alt="Handloom Traditions" />
+            <div class="fashion-side-body">
+              <span class="fashion-tag-sm">Handloom</span>
+              <h4>Handloom of Pondicherry: A Mystery Revived</h4>
+              <span class="fashion-time">July 2, 2026</span>
+            </div>
+          </article>
+          <article class="fashion-side-card" id="fashion-side-3">
+            <img src="images/story3.png" alt="Kalamkari Art" />
+            <div class="fashion-side-body">
+              <span class="fashion-tag-sm">Textile Art</span>
+              <h4>The Art Indian Dolls: Tradition Meets Contemporary</h4>
+              <span class="fashion-time">July 1, 2026</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ FOLLOW OUR PULSE (Social) ══════════════════════════ -->
+  <section class="social-section" id="social-section">
+    <div class="container">
+      <h2 class="section-title center" id="follow-title">Follow Our Pulse</h2>
+      <div class="social-grid" id="social-grid">
+        <a href="#" class="social-card" id="social-ig">
+          <div class="social-icon ig-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg>
+          </div>
+          <div class="social-info">
+            <span class="social-count" data-target="135000">0</span>
+            <span class="social-label">Followers</span>
+            <span class="social-sub">Follow Us</span>
+          </div>
+        </a>
+        <a href="#" class="social-card" id="social-x">
+          <div class="social-icon x-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </div>
+          <div class="social-info">
+            <span class="social-count" data-target="68000">0</span>
+            <span class="social-label">Followers</span>
+            <span class="social-sub">Follow Us</span>
+          </div>
+        </a>
+        <a href="#" class="social-card" id="social-yt">
+          <div class="social-icon yt-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M23 6.685a3 3 0 0 0-2.11-2.124C19.067 4 12 4 12 4s-7.067 0-8.89.561A3 3 0 0 0 1 6.685C.5 8.52.5 12 .5 12s0 3.48.5 5.315a3 3 0 0 0 2.11 2.124C4.933 20 12 20 12 20s7.067 0 8.89-.561A3 3 0 0 0 23 17.315C23.5 15.48 23.5 12 23.5 12s-.5-3.48-1.5-5.315zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+          </div>
+          <div class="social-info">
+            <span class="social-count" data-target="47000">0</span>
+            <span class="social-label">Subscribers</span>
+            <span class="social-sub">Subscribe</span>
+          </div>
+        </a>
+        <a href="#" class="social-card" id="social-fb">
+          <div class="social-icon fb-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.514c-1.491 0-1.956.93-1.956 1.883v2.27h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+          </div>
+          <div class="social-info">
+            <span class="social-count" data-target="21000">0</span>
+            <span class="social-label">Likes</span>
+            <span class="social-sub">Like Page</span>
+          </div>
+        </a>
+        <a href="#" class="social-card" id="social-li">
+          <div class="social-icon li-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div class="social-info">
+            <span class="social-count" data-target="17000">0</span>
+            <span class="social-label">Connections</span>
+            <span class="social-sub">Connect</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ TOP READS THIS WEEK ══════════════════════════ -->
+  <section class="top-reads" id="top-reads">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Top Reads This Week</h2>
+        <a href="#" class="section-more top-reads-all" id="top-reads-all">▲ View All</a>
+      </div>
+      <div class="reads-grid" id="reads-grid">
+        <article class="read-card" id="read-1">
+          <img src="images/story1.png" alt="Read 1" />
+          <div class="read-body">
+            <span class="read-tag">Heritage</span>
+            <h4>The Forgotten Stepwells of Rajasthan: Ancient Engineering Marvels Lost to Time</h4>
+            <p>These intricate water management systems once sustained entire cities across the arid landscape of Rajasthan.</p>
+            <div class="read-meta"><span>By Ravi Kumar</span><span>6 min</span></div>
+          </div>
+        </article>
+        <article class="read-card" id="read-2">
+          <img src="images/story2.png" alt="Read 2" />
+          <div class="read-body">
+            <span class="read-tag">Art</span>
+            <h4>The Sound of Saraswati: How the Ancient Veena Shaped Indian Classical Music</h4>
+            <p>Tracing the veena's journey from the mythological realm of Saraswati to the stages of modern Carnatic concerts.</p>
+            <div class="read-meta"><span>By Aisha Khan</span><span>5 min</span></div>
+          </div>
+        </article>
+        <article class="read-card" id="read-3">
+          <img src="images/story3.png" alt="Read 3" />
+          <div class="read-body">
+            <span class="read-tag">History</span>
+            <h4>How the Silk Route Transformed Indian Cuisine Forever</h4>
+            <p>Saffron from Persia, pepper from the Malabar coast — the Silk Route didn't just carry silk; it carried flavors.</p>
+            <div class="read-meta"><span>By Priya Bhat</span><span>8 min</span></div>
+          </div>
+        </article>
+        <article class="read-card" id="read-4">
+          <img src="images/spotlight1.png" alt="Read 4" />
+          <div class="read-body">
+            <span class="read-tag">Culture</span>
+            <h4>Pattachitra: Odisha's Sacred Scroll Art That Tells Epic Stories</h4>
+            <p>Master scroll painters of Puri keep the ancient tradition of Pattachitra alive, one story at a time.</p>
+            <div class="read-meta"><span>By Sneha Mishra</span><span>4 min</span></div>
+          </div>
+        </article>
+        <article class="read-card" id="read-5">
+          <img src="images/fashion_main.png" alt="Read 5" />
+          <div class="read-body">
+            <span class="read-tag">Fashion</span>
+            <h4>Zardozi Embroidery: The Mughal Art That Survived Empires and Entered Paris</h4>
+            <p>The glittering gold-thread embroidery of Mughal courts now adorns luxury gowns on the Parisian catwalk.</p>
+            <div class="read-meta"><span>By Nisha Gupta</span><span>6 min</span></div>
+          </div>
+        </article>
+        <article class="read-card" id="read-6">
+          <img src="images/spotlight2.png" alt="Read 6" />
+          <div class="read-body">
+            <span class="read-tag">Festivals</span>
+            <h4>Onam's Pookalam: The Floral Art That Celebrates Kerala's Mythical King</h4>
+            <p>The intricate flower carpet at the heart of Onam celebrations carries a 3,000-year-old legend of Mahabali.</p>
+            <div class="read-meta"><span>By Kavya Menon</span><span>5 min</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ NEWSLETTER ══════════════════════════ -->
+  <section class="newsletter-section" id="newsletter">
+    <div class="container">
+      <div class="newsletter-card" id="newsletter-card">
+        <div class="nl-deco"></div>
+        <div class="nl-content">
+          <span class="nl-badge">📬 Newsletter</span>
+          <h2>Stay Connected with India's Heritage</h2>
+          <p>Join 50,000+ readers who get weekly deep dives into India's art, history, culture, and living traditions — delivered to your inbox every Sunday.</p>
+          <form class="nl-form" id="nl-form" onsubmit="handleNewsletterSubmit(event)">
+            <input type="email" id="nl-email" placeholder="Your email address" required />
+            <button type="submit" id="nl-submit">Subscribe Free</button>
+          </form>
+          <span class="nl-disclaimer">No spam. Unsubscribe anytime. Read our <a href="#">Privacy Policy</a>.</span>
+        </div>
+        <div class="nl-visual">
+          <div class="nl-stats">
+            <div class="nl-stat" id="nl-stat-1"><span>50K+</span><small>Subscribers</small></div>
+            <div class="nl-stat" id="nl-stat-2"><span>4.9★</span><small>Rating</small></div>
+            <div class="nl-stat" id="nl-stat-3"><span>100+</span><small>Editions</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand" id="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <span class="logo-heri">HeriTej</span><span class="logo-pulse">Pulse</span>
+          </a>
+          <p class="footer-tagline">Preserving India's past. Celebrating its present. Inspiring its future.</p>
+          <div class="footer-socials">
+            <a href="#" class="fsoc" id="fsoc-ig" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg>
+            </a>
+            <a href="#" class="fsoc" id="fsoc-x" aria-label="X/Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="fsoc" id="fsoc-yt" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23 6.685a3 3 0 0 0-2.11-2.124C19.067 4 12 4 12 4s-7.067 0-8.89.561A3 3 0 0 0 1 6.685C.5 8.52.5 12 .5 12s0 3.48.5 5.315a3 3 0 0 0 2.11 2.124C4.933 20 12 20 12 20s7.067 0 8.89-.561A3 3 0 0 0 23 17.315C23.5 15.48 23.5 12 23.5 12s-.5-3.48-1.5-5.315zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+            <a href="#" class="fsoc" id="fsoc-fb" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.514c-1.491 0-1.956.93-1.956 1.883v2.27h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col" id="footer-sections">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="#" id="fc-heritage">Heritage</a></li>
+            <li><a href="#" id="fc-culture">Culture &amp; Arts</a></li>
+            <li><a href="#" id="fc-travel">Travel</a></li>
+            <li><a href="#" id="fc-food">Food Stories</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" id="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#" id="fc-about">About Us</a></li>
+            <li><a href="#" id="fc-contact">Contact</a></li>
+            <li><a href="#" id="fc-advertise">Advertise</a></li>
+            <li><a href="#" id="fc-careers">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" id="footer-legal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#" id="fc-privacy">Privacy Policy</a></li>
+            <li><a href="#" id="fc-terms">Terms of Use</a></li>
+            <li><a href="#" id="fc-cookie">Cookie Policy</a></li>
+            <li><a href="#" id="fc-sitemap">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom" id="footer-bottom">
+        <p>© 2026 HeriTej Pulse. All rights reserved. Made with 🩷 for India's heritage.</p>
+        <p class="footer-credit">Celebrating 5 years of cultural journalism</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- Google Translate Container (Hidden off-screen) -->
+  <div id="google_translate_element"></div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,sa,ta,te,mr,bn,as,es,fr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script src="script.js"></script>
+  <!-- Chatbot Script -->
+  <script src="chatbot.js"></script>
+  <!-- AI Features Script -->
+  <script src="ai-features.js"></script>
+</body>
+</html>

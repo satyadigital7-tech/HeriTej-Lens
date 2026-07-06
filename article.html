@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Dynamic Preloader -->
+  <script src="preloader.js"></script>
+  <meta name="description" id="meta-desc" content="Read the full article on HeriTej Pulse — India's premier heritage and culture news platform." />
+  <title id="page-title">Article | HeriTej Pulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="article.css" />
+  <!-- Chatbot CSS -->
+  <link rel="stylesheet" href="chatbot.css" />
+  <!-- Google Translate File Origin / CORS relative-protocol Fix -->
+  <script type="text/javascript">
+    (function() {
+      const origCE = document.createElement;
+      document.createElement = function(tag, options) {
+        const el = origCE.call(document, tag, options);
+        const t = tag.toLowerCase();
+        if (t === 'script' || t === 'iframe') {
+          const desc = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src') || 
+                       Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype, 'src') ||
+                       Object.getOwnPropertyDescriptor(Element.prototype, 'src');
+          Object.defineProperty(el, 'src', {
+            set: function(v) {
+              if (typeof v === 'string') {
+                if (v.startsWith('//')) v = 'https:' + v;
+                else if (v.startsWith('file://translate.')) v = v.replace('file://', 'https://');
+              }
+              if (desc && desc.set) desc.set.call(this, v);
+              else this.setAttribute('src', v);
+            },
+            get: function() {
+              return desc && desc.get ? desc.get.call(this) : this.getAttribute('src');
+            },
+            configurable: true
+          });
+        } else if (t === 'link') {
+          const desc = Object.getOwnPropertyDescriptor(HTMLLinkElement.prototype, 'href') ||
+                       Object.getOwnPropertyDescriptor(Element.prototype, 'href');
+          Object.defineProperty(el, 'href', {
+            set: function(v) {
+              if (typeof v === 'string') {
+                if (v.startsWith('//')) v = 'https:' + v;
+                else if (v.startsWith('file://translate.')) v = v.replace('file://', 'https://');
+              }
+              if (desc && desc.set) desc.set.call(this, v);
+              else this.setAttribute('href', v);
+            },
+            get: function() {
+              return desc && desc.get ? desc.get.call(this) : this.getAttribute('href');
+            },
+            configurable: true
+          });
+        }
+        return el;
+      };
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ══════════════ BREAKING BAR ══════════════ -->
+  <div class="article-topbar" id="article-topbar">
+    <div class="atb-inner">
+      <span class="atb-breaking">BREAKING</span>
+      <span class="atb-title" id="atb-title">The Sacred Geometry of Khajuraho: Mathematics Hidden in Stone</span>
+      <div class="atb-right">
+        <span id="atb-date"></span>
+        <span class="atb-sep">·</span>
+        <span id="atb-stories">18 Stories Today</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <div class="nav-logo">
+        <a href="index.html" id="logo-link">
+          <span class="logo-heri">HeriTej</span><span class="logo-pulse">Pulse</span>
+        </a>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-item" id="nav-home">Home</a>
+        <a href="news.html"  class="nav-item active" id="nav-news">News</a>
+        <a href="games.html" class="nav-item" id="nav-games">Games</a>
+        <a href="about.html" class="nav-item" id="nav-about">About</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" id="search-btn" aria-label="Search">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="nav-icon-btn" id="bookmark-btn" aria-label="Bookmark this article">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <div class="lang-selector-container">
+          <button class="lang-selector" id="lang-selector-btn" aria-haspopup="listbox" aria-expanded="false">
+            <svg class="lang-globe-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/>
+            </svg>
+            <span class="lang-current">English</span>
+            <svg class="lang-chevron-icon" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </button>
+          <ul class="lang-dropdown" id="lang-dropdown-list" role="listbox">
+            <li class="lang-option active" data-lang="en" role="option" aria-selected="true">English</li>
+            <li class="lang-option" data-lang="hi" role="option" aria-selected="false">Hindi</li>
+            <li class="lang-option" data-lang="sa" role="option" aria-selected="false">Sanskrit</li>
+            <li class="lang-option" data-lang="ta" role="option" aria-selected="false">Tamil</li>
+            <li class="lang-option" data-lang="te" role="option" aria-selected="false">Telugu</li>
+            <li class="lang-option" data-lang="mr" role="option" aria-selected="false">Marathi</li>
+            <li class="lang-option" data-lang="bn" role="option" aria-selected="false">Bengali</li>
+            <li class="lang-option" data-lang="as" role="option" aria-selected="false">Assamese</li>
+            <li class="lang-option" data-lang="es" role="option" aria-selected="false">Spanish</li>
+            <li class="lang-option" data-lang="fr" role="option" aria-selected="false">French</li>
+          </ul>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="search-overlay" id="search-overlay">
+      <input type="text" id="search-input" placeholder="Search heritage stories…" autocomplete="off" />
+      <button id="search-close">✕</button>
+    </div>
+  </header>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="reading-progress"></div>
+
+  <!-- ══════════════ ARTICLE LAYOUT ══════════════ -->
+  <div class="article-layout" id="article-layout">
+    <div class="container">
+      <div class="article-wrapper">
+
+        <!-- ── BREADCRUMB ── -->
+        <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html" id="bc-home">Home</a>
+          <span class="bc-sep">›</span>
+          <a href="news.html" id="bc-news">News</a>
+          <span class="bc-sep">›</span>
+          <span class="bc-current" id="bc-cat">Ancient Civilisations</span>
+        </nav>
+
+        <!-- ── MAIN COLUMN ── -->
+        <div class="article-main" id="article-main">
+
+          <!-- Category Badge -->
+          <div class="article-category" id="article-category">
+            <span class="ac-badge ancient" id="ac-badge">Ancient Civilisations</span>
+          </div>
+
+          <!-- Title -->
+          <h1 class="article-title" id="article-title">
+            The Sacred Geometry of Khajuraho: Mathematics Hidden in Stone
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="article-subtitle" id="article-subtitle">
+            New structural analyses of the Khajuraho temples reveal an extraordinarily precise application of Vastu Shastra principles.
+          </p>
+
+          <!-- Author Row -->
+          <div class="article-byline" id="article-byline">
+            <div class="byline-author">
+              <div class="byline-avatar" id="byline-avatar" style="background:#7a4a2e;">AK</div>
+              <div class="byline-info">
+                <span class="byline-name" id="byline-name">Arjun Krishnaswamy</span>
+                <span class="byline-date" id="byline-date">June 18, 2024</span>
+              </div>
+            </div>
+            <div class="byline-right">
+              <span class="byline-readtime" id="byline-readtime">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                7 min read
+              </span>
+            </div>
+          </div>
+
+          <!-- Hero Image -->
+          <figure class="article-hero-img" id="article-hero-img">
+            <img src="images/article_hero.png" alt="Khajuraho Temple Complex" id="hero-img" />
+            <figcaption id="hero-caption">The Khajuraho Group of Monuments, Madhya Pradesh — a UNESCO World Heritage Site since 1986. Photo: Archaeological Survey of India</figcaption>
+          </figure>
+
+          <!-- Article Body -->
+          <div class="article-body" id="article-body">
+
+            <p>The medieval temples of Khajuraho, built by the Chandela dynasty between 950 and 1050 CE, are celebrated for their exquisite erotic sculptures — but a new study reveals a deeper architectural intelligence encoded in their proportions. Researchers from IIT Delhi have used 3D scanning to demonstrate that every dimension of the temples adheres strictly to the <em>Manasara Shilpa Shastra</em>, an ancient Indian treatise on architecture. The Shikhara towers precisely mimic the sacred Mount Meru, with each successive tier scaled by the golden ratio, creating a visual representation of the cosmos in sandstone.</p>
+
+            <blockquote class="article-quote" id="article-pull-quote">
+              "The Chandela architects weren't just building temples — they were encoding the entire structure of the universe in stone. Every measurement is a cosmological statement."
+              <cite>— Prof. Rajeev Sharma, IIT Delhi Department of Architecture</cite>
+            </blockquote>
+
+            <p>Furthermore, the implications of these findings stretch beyond the immediate academic circles. They challenge our preconceived notions about the technological and organizational capabilities of societies that predate modern industrialization. As we unearth more of our shared past, we are consistently reminded that human ingenuity is not a strictly modern phenomenon, but a constant thread weaving through the tapestry of our collective history.</p>
+
+            <h2>The Mathematics of the Divine</h2>
+
+            <p>The study, published in the <em>Journal of Archaeological Science</em>, used photogrammetry and LIDAR scanning to create precise 3D models of all 25 surviving temples at Khajuraho. The data revealed that the height-to-base ratios, the proportions of the ambulatory corridors, and even the spacing between sculptures follow a consistent mathematical system derived from the <em>Vastu Shastra</em> — the ancient Indian science of spatial arrangement.</p>
+
+            <p>Dr. Meera Krishnan, a co-author of the study from IIIT Hyderabad, explained that this isn't simply about measurements: "The Chandela builders were using mathematics as theology. The proportions were meant to produce specific spiritual experiences in the devotee walking through the mandapa — a kind of sacred geometry that affects the human nervous system." This mirrors discoveries at temples in Tamil Nadu and Karnataka, suggesting a pan-Indian architectural science far more sophisticated than previously understood.</p>
+
+            <h2>Vastu Shastra and the Cosmic Blueprint</h2>
+
+            <p>The <em>Manasara</em>, the text that appears to have guided Khajuraho's builders, describes a hierarchical system of spatial proportions derived from the human body, astronomical observations, and numerical symbolism. The basic unit of measurement — the <em>tala</em> — is defined as the length of the face, and all temple dimensions are expressed as multiples or fractions of this unit.</p>
+
+            <div class="article-callout" id="article-callout">
+              <div class="callout-icon">🔬</div>
+              <div class="callout-content">
+                <strong>Research Highlight</strong>
+                <p>IIT Delhi's 3D scan revealed that the Lakshmana Temple's Shikhara rises to exactly 31 <em>hastas</em> — a unit defined in the Manasara as the optimal height for a temple dedicated to Vishnu in a major city.</p>
+              </div>
+            </div>
+
+            <p>Future excavations are planned for the upcoming seasons, aiming to delve deeper into these remarkable structures. Researchers hope that by applying even more advanced techniques, they can recover microscopic residues that might offer clues about daily life, diet, and trade patterns, thereby enriching our understanding of these ancient peoples. The team is also in contact with scholars at Oxford and Tokyo who have studied similar mathematical traditions in Greek and Japanese architecture.</p>
+
+            <p>The Khajuraho temples, already among the most visited heritage sites in India, may now attract a new generation of visitors: mathematicians, architects, and philosophers drawn to what one researcher called "the greatest surviving textbook of ancient Indian spatial science."</p>
+
+          </div><!-- /article-body -->
+
+          <!-- Tags -->
+          <div class="article-tags" id="article-tags">
+            <span class="tags-label">TAGS:</span>
+            <div class="tags-list">
+              <a href="#" class="tag-pill" id="tag-1">Khajuraho</a>
+              <a href="#" class="tag-pill" id="tag-2">Architecture</a>
+              <a href="#" class="tag-pill" id="tag-3">Medieval India</a>
+              <a href="#" class="tag-pill" id="tag-4">Vastu Shastra</a>
+              <a href="#" class="tag-pill" id="tag-5">Archaeology</a>
+            </div>
+          </div>
+
+          <!-- Share -->
+          <div class="article-share" id="article-share">
+            <span class="share-label">Share this article</span>
+            <div class="share-buttons">
+              <button class="share-btn fb-share" id="share-fb" aria-label="Share on Facebook" onclick="shareArticle('facebook')">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.514c-1.491 0-1.956.93-1.956 1.883v2.27h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+              </button>
+              <button class="share-btn x-share" id="share-x" aria-label="Share on X" onclick="shareArticle('x')">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </button>
+              <button class="share-btn li-share" id="share-li" aria-label="Share on LinkedIn" onclick="shareArticle('linkedin')">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </button>
+              <button class="share-btn copy-share" id="share-copy" aria-label="Copy link" onclick="copyLink()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Author Bio Card -->
+          <div class="author-bio-card" id="author-bio-card">
+            <div class="abc-avatar" style="background:#7a4a2e;">AK</div>
+            <div class="abc-info">
+              <span class="abc-name" id="abc-name">Arjun Krishnaswamy</span>
+              <span class="abc-role">Senior Heritage Correspondent, HeriTej Pulse</span>
+              <p class="abc-bio">Arjun covers ancient Indian architecture, archaeology, and cultural heritage across South and Central India. He holds a PhD in Ancient History from JNU and has written for The Hindu, India Today, and Frontline.</p>
+              <div class="abc-links">
+                <a href="#" id="abc-twitter">🐦 @ArjunKrishna</a>
+                <a href="#" id="abc-more">More by this author →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Next / Prev Navigation -->
+          <div class="article-nav" id="article-nav">
+            <a href="article.html?id=1" class="anav-card prev" id="anav-prev">
+              <span class="anav-dir">← Previous</span>
+              <span class="anav-title">Secrets Beneath the Taj Mahal: New Archaeological Discoveries</span>
+            </a>
+            <a href="article.html?id=3" class="anav-card next" id="anav-next">
+              <span class="anav-dir">Next →</span>
+              <span class="anav-title">Restoring Ajanta's Hidden Pigments: True Colors of Indian Cave Art</span>
+            </a>
+          </div>
+
+        </div><!-- /article-main -->
+
+        <!-- ── SIDEBAR ── -->
+        <aside class="article-sidebar" id="article-sidebar">
+
+          <!-- Sticky Wrapper -->
+          <div class="sidebar-sticky" id="sidebar-sticky">
+
+            <!-- Related Articles -->
+            <div class="sidebar-widget" id="widget-related">
+              <h3 class="widget-title">Related Articles</h3>
+              <div class="related-list" id="related-list">
+
+                <a href="article.html?id=1" class="related-card" id="related-1">
+                  <div class="related-img">
+                    <img src="images/news_tajmahal.png" alt="Taj Mahal Archaeology" />
+                  </div>
+                  <div class="related-info">
+                    <h4>Secrets Beneath the Taj Mahal: New Archaeological Discoveries in Agra</h4>
+                    <span class="related-time">
+                      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      5 min read
+                    </span>
+                  </div>
+                </a>
+
+                <a href="article.html?id=3" class="related-card" id="related-2">
+                  <div class="related-img">
+                    <img src="images/story2.png" alt="Ajanta Cave Pigments" />
+                  </div>
+                  <div class="related-info">
+                    <h4>Restoring Ajanta's Hidden Pigments: The True Colors of Indian Cave Art</h4>
+                    <span class="related-time">
+                      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      4 min read
+                    </span>
+                  </div>
+                </a>
+
+                <a href="article.html?id=4" class="related-card" id="related-3">
+                  <div class="related-img">
+                    <img src="images/story3.png" alt="Hampi Drone Views" />
+                  </div>
+                  <div class="related-info">
+                    <h4>Hampi From Above: Drone Views Reveal the Lost Grandeur of Vijayanagara</h4>
+                    <span class="related-time">
+                      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      6 min read
+                    </span>
+                  </div>
+                </a>
+
+                <a href="article.html?id=5" class="related-card" id="related-4">
+                  <div class="related-img">
+                    <img src="images/news_stepwell.png" alt="Stepwells Rajasthan" />
+                  </div>
+                  <div class="related-info">
+                    <h4>Stepwells of Rajasthan: India's Vanishing Water Architecture</h4>
+                    <span class="related-time">
+                      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      6 min read
+                    </span>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+
+            <!-- Newsletter Widget -->
+            <div class="sidebar-widget widget-newsletter" id="widget-nl">
+              <div class="wn-icon">📬</div>
+              <h3 class="wn-title">Get Heritage Stories in Your Inbox</h3>
+              <p class="wn-desc">Join 50,000+ readers. Every Sunday.</p>
+              <form class="wn-form" id="wn-form" onsubmit="handleSidebarNL(event)">
+                <input type="email" id="wn-email" placeholder="Your email address" required />
+                <button type="submit" id="wn-submit">Subscribe</button>
+              </form>
+            </div>
+
+            <!-- Popular Tags Widget -->
+            <div class="sidebar-widget" id="widget-tags">
+              <h3 class="widget-title">Popular Tags</h3>
+              <div class="popular-tags" id="popular-tags">
+                <a href="#" class="ptag">Temples</a>
+                <a href="#" class="ptag">UNESCO</a>
+                <a href="#" class="ptag">Archaeology</a>
+                <a href="#" class="ptag">Mughal</a>
+                <a href="#" class="ptag">Classical Arts</a>
+                <a href="#" class="ptag">Textiles</a>
+                <a href="#" class="ptag">Festivals</a>
+                <a href="#" class="ptag">Food Heritage</a>
+                <a href="#" class="ptag">Buddhism</a>
+                <a href="#" class="ptag">Rajasthan</a>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+      </div><!-- /article-wrapper -->
+    </div><!-- /container -->
+  </div><!-- /article-layout -->
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand" id="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <span class="logo-heri">HeriTej</span><span class="logo-pulse">Pulse</span>
+          </a>
+          <p class="footer-tagline">The world's premier heritage media platform. Explore the past, understand the present.</p>
+          <div class="footer-socials">
+            <a href="#" class="fsoc" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg>
+            </a>
+            <a href="#" class="fsoc" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="fsoc" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23 6.685a3 3 0 0 0-2.11-2.124C19.067 4 12 4 12 4s-7.067 0-8.89.561A3 3 0 0 0 1 6.685C.5 8.52.5 12 .5 12s0 3.48.5 5.315a3 3 0 0 0 2.11 2.124C4.933 20 12 20 12 20s7.067 0 8.89-.561A3 3 0 0 0 23 17.315C23.5 15.48 23.5 12 23.5 12s-.5-3.48-1.5-5.315zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col" id="footer-sections">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="news.html">News Hub</a></li>
+            <li><a href="#">Heritage Quiz</a></li>
+            <li><a href="#">Games Arcade</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" id="footer-games">
+          <h4>Games</h4>
+          <ul>
+            <li><a href="#">Heritage Quiz</a></li>
+            <li><a href="#">Word Puzzle</a></li>
+            <li><a href="#">Trivia Blitz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" id="footer-legal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom" id="footer-bottom">
+        <p>© 2026 HeriTej Pulse Media. All rights reserved.</p>
+        <p class="footer-credit">"Preserving the Pulse of Humanity"</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- Google Translate Container (Hidden off-screen) -->
+  <div id="google_translate_element"></div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,sa,ta,te,mr,bn,as,es,fr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script src="article-script.js"></script>
+  <!-- Chatbot Script -->
+  <script src="chatbot.js"></script>
+</body>
+</html>
