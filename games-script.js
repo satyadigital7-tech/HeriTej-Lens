@@ -1077,8 +1077,7 @@ const savedLang = localStorage.getItem('selectedLanguage') || 'en';
 if (savedLang !== 'en') {
   const activeOption = document.querySelector('.lang-option[data-lang="'+savedLang+'"]');
   if (activeOption) { langOptions.forEach(o=>{o.classList.remove('active');o.setAttribute('aria-selected','false');}); activeOption.classList.add('active'); activeOption.setAttribute('aria-selected','true'); if(langCurrent)langCurrent.textContent=activeOption.textContent.trim(); }
-  if (window.location.protocol==='file:') { setTimeout(()=>translatePageClient(savedLang),300); }
-  else { const checkCombo=setInterval(()=>{ const gs=document.querySelector('.goog-te-combo'); if(gs){clearInterval(checkCombo);if(gs.value!==savedLang){gs.value=savedLang;gs.dispatchEvent(new Event('change'));}} },100); setTimeout(()=>clearInterval(checkCombo),8000); }
+  setTimeout(() => translatePageClient(savedLang), 300);
 }
 if (langSelectorBtn && langContainer) {
   langSelectorBtn.addEventListener('click', (e)=>{ e.stopPropagation(); langContainer.classList.toggle('open'); langSelectorBtn.setAttribute('aria-expanded',langContainer.classList.contains('open')); });
@@ -1086,11 +1085,8 @@ if (langSelectorBtn && langContainer) {
   document.addEventListener('click',(e)=>{ if(!langContainer.contains(e.target)){langContainer.classList.remove('open');langSelectorBtn.setAttribute('aria-expanded','false');} });
   function setLanguageTranslation(langCode, langName) {
     localStorage.setItem('selectedLanguage',langCode);
-    document.cookie="googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie="googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain="+window.location.hostname+";";
-    if(langCode!=='en'){document.cookie="googtrans=/en/"+langCode+"; path=/;";document.cookie="googtrans=/en/"+langCode+"; path=/; domain="+window.location.hostname+";";}
     showToast('Translating to '+langName+'...');
-    if(window.location.protocol==='file:'){translatePageClient(langCode);}else{const gs=document.querySelector('.goog-te-combo');if(gs){gs.value=langCode;gs.dispatchEvent(new Event('change'));}else{setTimeout(()=>window.location.reload(),500);}}
+    translatePageClient(langCode);
   }
 }
 

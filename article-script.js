@@ -546,23 +546,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (langCurrent) langCurrent.textContent = activeOption.textContent.trim();
     }
 
-    if (window.location.protocol === 'file:') {
-      setTimeout(() => {
-        translatePageClient(savedLang);
-      }, 300);
-    } else {
-      const checkCombo = setInterval(() => {
-        const googleSelect = document.querySelector('.goog-te-combo');
-        if (googleSelect) {
-          clearInterval(checkCombo);
-          if (googleSelect.value !== savedLang) {
-            googleSelect.value = savedLang;
-            googleSelect.dispatchEvent(new Event('change'));
-          }
-        }
-      }, 100);
-      setTimeout(() => clearInterval(checkCombo), 8000);
-    }
+    setTimeout(() => {
+      translatePageClient(savedLang);
+    }, 300);
   }
 
   if (langSelectorBtn && langContainer) {
@@ -601,29 +587,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setLanguageTranslation(langCode, langName) {
       localStorage.setItem('selectedLanguage', langCode);
-
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname + ";";
-      if (langCode !== 'en') {
-        document.cookie = "googtrans=/en/" + langCode + "; path=/;";
-        document.cookie = "googtrans=/en/" + langCode + "; path=/; domain=" + window.location.hostname + ";";
-      }
-
       showToast(`Translating to ${langName}…`);
-
-      if (window.location.protocol === 'file:') {
-        translatePageClient(langCode);
-      } else {
-        const googleSelect = document.querySelector('.goog-te-combo');
-        if (googleSelect) {
-          googleSelect.value = langCode;
-          googleSelect.dispatchEvent(new Event('change'));
-        } else {
-          setTimeout(() => {
-            window.location.reload();
-          }, 500);
-        }
-      }
+      translatePageClient(langCode);
     }
   }
 
