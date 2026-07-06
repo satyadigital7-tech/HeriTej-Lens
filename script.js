@@ -592,6 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cardEl) {
       cardEl.style.cursor = 'pointer';
       cardEl.addEventListener('click', (e) => {
+        if (e.target.closest('.ai-summary-link') || e.target.closest('.ai-card-action')) return;
         if (e.target.closest('a') && e.target.closest('a') !== cardEl) return;
         const articleId = homeCardMappings[cardId];
         window.location.href = `article.html?id=${articleId}`;

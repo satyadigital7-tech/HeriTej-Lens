@@ -421,15 +421,23 @@ ul { list-style: none; }
   border: 1px solid rgba(255,255,255,0.25);
 }
 .slider-btn:hover { background: var(--clr-primary); border-color: var(--clr-primary); }
-.slider-dots { display: flex; gap: 5px; }
+.slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 .dot {
   width: 7px; height: 7px;
   border-radius: 50%;
   background: rgba(255,255,255,0.4);
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
-.dot.active { background: var(--clr-accent); width: 20px; border-radius: 4px; }
+.dot.active {
+  background: var(--clr-accent);
+  width: 22px;
+  border-radius: 100px;
+}
 
 /* Today in History */
 .today-history {

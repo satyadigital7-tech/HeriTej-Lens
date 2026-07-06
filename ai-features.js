@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const actionDiv = document.createElement('div');
           actionDiv.className = 'ai-card-action';
           actionDiv.innerHTML = `
-            <span class="ai-summary-link" onclick="summarizeArticle('${c.key}')">
+            <span class="ai-summary-link" onclick="event.stopPropagation(); summarizeArticle('${c.key}')">
               ✨ Summarize with AI
             </span>
             <span style="font-size: 0.65rem; color: var(--clr-text-muted); font-family: var(--ff-ui);">Model v1.8</span>
