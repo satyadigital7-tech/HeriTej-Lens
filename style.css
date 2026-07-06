@@ -89,8 +89,13 @@ ul { list-style: none; }
   font-size: 0.78rem;
   white-space: nowrap;
   animation: tickerScroll 40s linear infinite;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   color: rgba(255,255,255,0.75);
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
 }
 @keyframes tickerScroll {
   0%   { transform: translateX(100vw); }
