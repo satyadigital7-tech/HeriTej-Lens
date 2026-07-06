@@ -70,6 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ─── Hero Slider ────────────────────────────── */
   const slides      = Array.from(document.querySelectorAll('.slide'));
+  const sliderDotsContainer = document.getElementById('slider-dots');
+  if (sliderDotsContainer && slides.length > 0) {
+    sliderDotsContainer.innerHTML = '';
+    slides.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = i === 0 ? 'dot active' : 'dot';
+      dot.setAttribute('data-slide', i);
+      sliderDotsContainer.appendChild(dot);
+    });
+  }
   const dots        = Array.from(document.querySelectorAll('#slider-dots .dot'));
   const prevBtn     = document.getElementById('slider-prev');
   const nextBtn     = document.getElementById('slider-next');
@@ -101,13 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clicking anywhere on the slide navigates to the news-detail page
     slides.forEach(slide => {
       slide.style.cursor = 'pointer';
-      slide.addEventListener('click', () => {
-        const idMap = {
-          'slide-1': '2',
-          'slide-2': '3',
-          'slide-3': '4'
-        };
-        const id = idMap[slide.id] || '2';
+      slide.addEventListener('click', (e) => {
+        if (e.target.closest('button')) return;
+        const id = slide.getAttribute('data-article-id') || '2';
         window.location.href = `article.html?id=${id}`;
       });
     });
