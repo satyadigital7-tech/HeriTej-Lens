@@ -632,6 +632,76 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ─── Homepage Welcome Popup Modal Injection & Logic ─── */
+  const welcomePopupKey = 'heritej_has_seen_welcome_popup';
+  const hasSeenPopup = localStorage.getItem(welcomePopupKey);
+
+  if (!hasSeenPopup) {
+    const welcomeHTML = `
+      <div class="welcome-modal-backdrop" id="welcome-modal-backdrop">
+        <div class="welcome-modal" id="welcome-modal">
+          <button class="welcome-modal-close" id="welcome-modal-close" aria-label="Close dialog">✕</button>
+          <div class="welcome-modal-content">
+            <div class="welcome-modal-img">
+              <img src="images/hero_banner.png" alt="Welcome to HeriTej Pulse" />
+            </div>
+            <div class="welcome-modal-body">
+              <span class="welcome-modal-badge">✨ Exclusive Welcome</span>
+              <h2>Explore India's Rich Heritage</h2>
+              <p>Subscribe to the HeriTej Pulse newsletter to receive weekly stories, curated news, historical facts, and traditional art profiles delivered to your inbox.</p>
+              <form class="welcome-modal-form" id="welcome-modal-form">
+                <input type="email" placeholder="Enter your email address" required id="welcome-popup-email" />
+                <button type="submit" id="welcome-popup-submit">Subscribe Free</button>
+              </form>
+              <span class="welcome-modal-privacy">No spam. Unsubscribe anytime.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Append to body
+    const welcomeContainer = document.createElement('div');
+    welcomeContainer.innerHTML = welcomeHTML;
+    document.body.appendChild(welcomeContainer);
+
+    const backdrop = document.getElementById('welcome-modal-backdrop');
+    const closeBtn = document.getElementById('welcome-modal-close');
+    const form     = document.getElementById('welcome-modal-form');
+    const submitBtn = document.getElementById('welcome-popup-submit');
+
+    // Trigger open animation after 2.5s delay
+    setTimeout(() => {
+      if (backdrop) backdrop.classList.add('open');
+    }, 2500);
+
+    // Close function
+    const closePopup = () => {
+      if (backdrop) {
+        backdrop.classList.remove('open');
+        setTimeout(() => welcomeContainer.remove(), 500);
+      }
+      localStorage.setItem(welcomePopupKey, 'true');
+    };
+
+    // Close click listeners
+    closeBtn?.addEventListener('click', closePopup);
+    backdrop?.addEventListener('click', (e) => {
+      if (e.target === backdrop) closePopup();
+    });
+
+    // Form submit listener
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (submitBtn) {
+        submitBtn.textContent = '✓ Subscribed!';
+        submitBtn.style.background = '#1a5c2e';
+        submitBtn.style.color = '#fff';
+      }
+      setTimeout(closePopup, 1200);
+    });
+  }
+
   console.log('%c🏛️ HeriTej Pulse', 'font-size:20px; font-weight:bold; color:#b5451b;');
   console.log('%cIndia\'s Heritage News Platform — Loaded Successfully', 'color:#7a6a55;');
 
