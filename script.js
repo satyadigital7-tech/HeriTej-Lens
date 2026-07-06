@@ -272,12 +272,40 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /* ─── Category Pills Interaction ────────────── */
+  const catPillMapping = {
+    'cat-ancient': 'ancient',
+    'cat-classical': 'arts',
+    'cat-fairs': 'cultural-heritage',
+    'cat-monuments': 'heritage',
+    'cat-tribal': 'culture',
+    'cat-fashion': 'fashion'
+  };
+
   document.querySelectorAll('.cat-pill').forEach(pill => {
     pill.addEventListener('click', function(e) {
       e.preventDefault();
-      document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-      this.classList.add('active');
+      const cat = catPillMapping[this.id];
+      if (cat) {
+        window.location.href = `news.html?cat=${cat}`;
+      }
     });
+  });
+
+  /* ─── Section More Links Navigation ─────────── */
+  const sectionMoreLinks = {
+    'top-stories-more': 'news.html',
+    'explore-more': 'news.html',
+    'fashion-more': 'news.html?cat=fashion',
+    'top-reads-all': 'news.html'
+  };
+  Object.keys(sectionMoreLinks).forEach(linkId => {
+    const linkEl = document.getElementById(linkId);
+    if (linkEl) {
+      linkEl.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = sectionMoreLinks[linkId];
+      });
+    }
   });
 
   /* ─── Nav Active State ───────────────────────── */

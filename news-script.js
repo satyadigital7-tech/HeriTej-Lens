@@ -85,6 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Parse category parameter from URL on load
+  const urlParams = new URLSearchParams(window.location.search);
+  const catParam = urlParams.get('cat');
+  if (catParam) {
+    const targetBtn = document.querySelector(`.cat-filter[data-cat="${catParam}"]`);
+    if (targetBtn) {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      targetBtn.classList.add('active');
+      filterCards(catParam);
+    }
+  }
+
   // Reset from no-results
   document.getElementById('btn-reset-filter')?.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
