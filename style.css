@@ -439,6 +439,13 @@ ul { list-style: none; }
   border-radius: 100px;
 }
 
+/* Sidebar Wrapper */
+.hero-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 /* Today in History */
 .today-history {
   background: var(--clr-white);
