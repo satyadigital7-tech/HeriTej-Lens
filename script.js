@@ -102,7 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
     slides.forEach(slide => {
       slide.style.cursor = 'pointer';
       slide.addEventListener('click', () => {
-        window.location.href = 'article.html';
+        const idMap = {
+          'slide-1': '2',
+          'slide-2': '3',
+          'slide-3': '4'
+        };
+        const id = idMap[slide.id] || '2';
+        window.location.href = `article.html?id=${id}`;
       });
     });
 
@@ -559,6 +565,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return textNodes;
   }
+
+  /* ─── Homepage Card Clicks → Article Details Page ─── */
+  const homeCardMappings = {
+    // Top Stories
+    'story-card-1': '2',
+    'story-card-2': '3',
+    'story-card-3': '4',
+    // Indian Heritage Spotlight
+    'spot-card-1': '8',
+    'spot-card-2': '10',
+    'spot-card-3': '2',
+    'spot-card-4': '4',
+    'spot-card-5': '13',
+    // Fashion Fusion
+    'fashion-main-card': '13',
+    'fashion-side-1': '5',
+    'fashion-side-2': '11',
+    'fashion-side-3': '3',
+    // Top Reads This Week
+    'read-1': '5',
+    'read-2': '9',
+    'read-3': '8',
+    'read-4': '6',
+    'read-5': '13',
+    'read-6': '10'
+  };
+
+  Object.keys(homeCardMappings).forEach(cardId => {
+    const cardEl = document.getElementById(cardId);
+    if (cardEl) {
+      cardEl.style.cursor = 'pointer';
+      cardEl.addEventListener('click', (e) => {
+        if (e.target.closest('a') && e.target.closest('a') !== cardEl) return;
+        const articleId = homeCardMappings[cardId];
+        window.location.href = `article.html?id=${articleId}`;
+      });
+    }
+  });
 
   console.log('%c🏛️ HeriTej Pulse', 'font-size:20px; font-weight:bold; color:#b5451b;');
   console.log('%cIndia\'s Heritage News Platform — Loaded Successfully', 'color:#7a6a55;');
