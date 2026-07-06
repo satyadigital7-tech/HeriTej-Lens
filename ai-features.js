@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   function injectOracleWidget() {
-    const sidebar = document.getElementById('oracle-widget-holder') || document.getElementById('today-history');
+    const sidebar = document.getElementById('today-history');
     if (!sidebar) return;
 
     // Check if already injected

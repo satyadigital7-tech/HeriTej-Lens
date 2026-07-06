@@ -293,10 +293,9 @@ ul { list-style: none; }
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: 0;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 24px 24px 0;
+  padding: 24px 24px 24px;
   gap: 24px;
 }
 
@@ -437,85 +436,6 @@ ul { list-style: none; }
   background: var(--clr-accent);
   width: 22px;
   border-radius: 100px;
-}
-
-/* ── AI Trivia Oracle Section ───────────────────── */
-.oracle-section {
-  background: radial-gradient(circle at 10% 20%, rgba(254, 252, 243, 1) 0%, rgba(245, 240, 225, 0.4) 90%);
-  padding: 80px 0;
-  border-top: 1px solid var(--clr-border);
-  border-bottom: 1px solid var(--clr-border);
-}
-.oracle-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 64px;
-  align-items: center;
-}
-.oracle-tag {
-  display: inline-block;
-  font-family: var(--ff-ui);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--clr-primary);
-  background: var(--clr-tag-bg);
-  padding: 6px 12px;
-  border-radius: 100px;
-  margin-bottom: 18px;
-  letter-spacing: 1px;
-}
-.oracle-title {
-  font-family: var(--ff-head);
-  font-size: 2.2rem;
-  font-weight: 800;
-  line-height: 1.25;
-  color: var(--clr-dark);
-  margin-bottom: 20px;
-}
-.oracle-desc {
-  font-family: var(--ff-ui);
-  font-size: 1rem;
-  line-height: 1.65;
-  color: var(--clr-text-muted);
-  margin-bottom: 32px;
-}
-.oracle-stats {
-  display: flex;
-  gap: 40px;
-}
-.ostat-item {
-  display: flex;
-  flex-direction: column;
-}
-.ostat-num {
-  font-family: var(--ff-head);
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--clr-primary);
-}
-.ostat-lbl {
-  font-family: var(--ff-ui);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--clr-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 4px;
-}
-.oracle-widget-wrap {
-  position: relative;
-}
-.oracle-widget-wrap .ai-oracle-widget {
-  margin-top: 0;
-  box-shadow: var(--shadow-md);
-}
-
-@media (max-width: 1024px) {
-  .oracle-section { padding: 60px 0; }
-  .oracle-grid { grid-template-columns: 1fr; gap: 40px; }
-  .oracle-title { font-size: 1.8rem; }
-  .oracle-stats { justify-content: space-between; gap: 20px; }
 }
 
 /* Today in History */
