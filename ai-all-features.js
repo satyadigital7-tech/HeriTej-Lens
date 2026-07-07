@@ -120,7 +120,15 @@ const MOOD_RULES = [
 function detectMood(text) {
   const lower = text.toLowerCase();
   for (const rule of MOOD_RULES) {
-    if (rule.keywords.some(k => lower.includes(k))) return rule;
+    if (rule.keywords.some(k => {
+      if (k === 'new') {
+        return /\bnew(?!s\b)\b/i.test(lower);
+      }
+      const regex = new RegExp('\\b' + k, 'i');
+      return regex.test(lower);
+    })) {
+      return rule;
+    }
   }
   return { mood: '📖 Read', cls: 'reflective' };
 }
@@ -155,7 +163,7 @@ function attachMoodTags() {
     footer.before(aiRow);
   });
 
-  // News cards
+  // News cards on news list page
   document.querySelectorAll('.news-card, .nc-card').forEach(card => {
     const title = card.querySelector('h3, h4, .nc-title')?.textContent || '';
     if (!title || card.querySelector('.ai-mood-tag')) return;
@@ -163,9 +171,25 @@ function attachMoodTags() {
     const tag = document.createElement('span');
     tag.className = `ai-mood-tag ${cls}`;
     tag.textContent = mood;
-    const tagEl = card.querySelector('.nc-tag, .news-tag, .story-tag');
-    if (tagEl) tagEl.after(tag);
+    tag.style.marginRight = '8px';
+    const infoEl = card.querySelector('.nc-info');
+    if (infoEl) {
+      infoEl.prepend(tag);
+    }
   });
+
+  // Active Article page
+  const activeTitleEl = document.getElementById('article-title');
+  const activeCategoryEl = document.getElementById('ac-badge');
+  if (activeTitleEl && activeCategoryEl && !document.querySelector('.article-category .ai-mood-tag')) {
+    const titleText = activeTitleEl.textContent || '';
+    const { mood, cls } = detectMood(titleText);
+    const tag = document.createElement('span');
+    tag.className = `ai-mood-tag ${cls}`;
+    tag.textContent = mood;
+    tag.style.marginLeft = '8px';
+    activeCategoryEl.after(tag);
+  }
 }
 attachMoodTags();
 
