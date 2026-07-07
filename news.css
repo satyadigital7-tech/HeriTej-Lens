@@ -600,14 +600,14 @@
   pointer-events: none;
 }
 .cal-day-btn.has-news {
-  background: rgba(191,161,95,0.15);
-  color: #7a5a1e;
+  background: rgba(246,177,65,0.15);
+  color: #b57518;
   font-weight: 700;
-  border: 1px solid rgba(191,161,95,0.4);
+  border: 1px solid rgba(246,177,65,0.4);
 }
 .cal-day-btn.has-news:hover {
-  background: #bfa15f;
-  color: #0f1a14;
+  background: #f6b141;
+  color: #1a150c;
 }
 .cal-day-btn.selected {
   background: var(--clr-primary) !important;
