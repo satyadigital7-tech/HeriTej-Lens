@@ -338,7 +338,7 @@ function renderTrailSection() {
     }, 1400);
   });
 }
-renderTrailSection();
+// renderTrailSection();
 
 
 /* ══════════════════════════════════════════════════
