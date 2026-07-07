@@ -879,7 +879,7 @@ ul { list-style: none; }
 .fashion-main-img {
   width: 100%;
   position: relative;
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/3;
   overflow: hidden;
   cursor: pointer;
   border-radius: var(--radius-md);
