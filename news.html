@@ -15,7 +15,7 @@
   <!-- Chatbot CSS -->
   <link rel="stylesheet" href="chatbot.css" />
   <!-- AI Features CSS -->
-  <link rel="stylesheet" href="ai-features.css" />
+  <link rel="stylesheet" href="ai-all-features.css" />
   <!-- Google Translate File Origin / CORS relative-protocol Fix -->
   <script type="text/javascript">
     (function() {
@@ -191,6 +191,48 @@
       <div class="toolbar-inner">
         <span class="result-count" id="result-count"><strong id="count-num">13</strong> stories found</span>
         <div class="toolbar-right">
+          <!-- Calendar Date Filter -->
+          <div class="date-filter-container" id="date-filter-container">
+            <button class="date-filter-trigger" id="date-filter-btn" aria-haspopup="true" aria-expanded="false">
+              📅 Filter by Date
+            </button>
+            <div class="calendar-dropdown" id="calendar-dropdown">
+              <div style="display:flex;justify-content:space-between;margin-bottom:12px;gap:8px;">
+                <select id="cal-month" style="flex:1;padding:6px;border:1px solid var(--clr-border);border-radius:4px;font-family:var(--ff-ui);font-size:0.8rem;font-weight:600;">
+                  <option value="">All Months</option>
+                  <option value="0">January</option>
+                  <option value="1">February</option>
+                  <option value="2">March</option>
+                  <option value="3">April</option>
+                  <option value="4">May</option>
+                  <option value="5">June</option>
+                  <option value="6">July</option>
+                  <option value="7">August</option>
+                  <option value="8">September</option>
+                  <option value="9">October</option>
+                  <option value="10">November</option>
+                  <option value="11">December</option>
+                </select>
+                <select id="cal-year" style="width:90px;padding:6px;border:1px solid var(--clr-border);border-radius:4px;font-family:var(--ff-ui);font-size:0.8rem;font-weight:600;">
+                  <option value="">All Years</option>
+                  <option value="2026">2026</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                </select>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-family:var(--ff-ui);font-size:0.75rem;font-weight:600;color:var(--clr-text-muted);margin-bottom:8px;">
+                <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+              </div>
+              <div id="cal-days-grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;">
+                <!-- Days grid populated by JS -->
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-top:12px;border-top:1px solid var(--clr-border);padding-top:8px;align-items:center;">
+                <button id="cal-clear-btn" style="background:none;border:none;color:var(--clr-primary);font-family:var(--ff-ui);font-size:0.75rem;font-weight:700;cursor:pointer;padding:0;">Clear</button>
+                <span id="cal-selected-label" style="font-family:var(--ff-ui);font-size:0.72rem;color:var(--clr-text-muted);">None selected</span>
+              </div>
+            </div>
+          </div>
+
           <label class="sort-label" for="sort-select">Sort by:</label>
           <select class="sort-select" id="sort-select">
             <option value="newest">Newest First</option>
@@ -215,6 +257,32 @@
   <main class="news-main" id="news-main">
     <div class="container">
       <div class="news-grid" id="news-grid">
+
+        <!-- Article 14 -->
+        <article class="news-card" data-cat="fashion" id="article-14" data-article-id="14">
+          <div class="nc-img-wrap">
+            <img src="images/news.avif" alt="Manish Malhotra Indian Couture on Paris Runway" loading="lazy" />
+            <span class="nc-tag fashion">Fashion Fusion</span>
+            <button class="nc-bookmark" aria-label="Bookmark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+          </div>
+          <div class="nc-body">
+            <h2 class="nc-title">Indian Heritage Walks the Paris Haute Couture Runway</h2>
+            <p class="nc-excerpt">Indian couturier Manish Malhotra is set to make his debut at Paris Haute Couture Week 2026, becoming only the fourth Indian designer invited to the world's most prestigious haute couture platform.</p>
+            <div class="nc-meta">
+              <div class="nc-author">
+                <div class="nc-avatar" style="background:#c05ab2;">SM</div>
+                <span class="nc-author-name">Sneha Mishra</span>
+              </div>
+              <div class="nc-info">
+                <span class="nc-date">July 4, 2026</span>
+                <span class="nc-sep">·</span>
+                <span class="nc-time">4 min read</span>
+              </div>
+            </div>
+          </div>
+        </article>
 
         <!-- Article 1 -->
         <article class="news-card" data-cat="archaeology" id="article-1">
@@ -476,31 +544,6 @@
           </div>
         </article>
 
-        <!-- Article 11 -->
-        <article class="news-card" data-cat="culture" id="article-11">
-          <div class="nc-img-wrap">
-            <img src="images/spotlight1.png" alt="Bharatanatyam Goes Global" loading="lazy" />
-            <span class="nc-tag culture">Culture</span>
-            <button class="nc-bookmark" aria-label="Bookmark">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-            </button>
-          </div>
-          <div class="nc-body">
-            <h2 class="nc-title">Bharatanatyam Goes Global: A Traditional Dance That Wowed Paris</h2>
-            <p class="nc-excerpt">The ancient Tamil temple dance form electrified audiences at the Paris Opera House in its most celebrated international debut — changing the global conversation on Indian arts.</p>
-            <div class="nc-meta">
-              <div class="nc-author">
-                <div class="nc-avatar" style="background:#7a5ac0;">SM</div>
-                <span class="nc-author-name">Sita Menon</span>
-              </div>
-              <div class="nc-info">
-                <span class="nc-date">June 29, 2026</span>
-                <span class="nc-sep">·</span>
-                <span class="nc-time">6 min read</span>
-              </div>
-            </div>
-          </div>
-        </article>
 
         <!-- Article 12 -->
         <article class="news-card" data-cat="spirituality" id="article-12">
@@ -617,9 +660,9 @@
         <div class="footer-col" id="footer-legal">
           <h4>Legal</h4>
           <ul>
-            <li><a href="#" id="fc-privacy">Privacy Policy</a></li>
-            <li><a href="#" id="fc-terms">Terms of Use</a></li>
-            <li><a href="#" id="fc-cookie">Cookie Policy</a></li>
+            <li><a href="privacy.html" id="fc-privacy">Privacy & Editorial Guidelines</a></li>
+            <li><a href="privacy.html#feeds" id="fc-terms">Linking & Feeds Policy</a></li>
+            <li><a href="privacy.html#privacy" id="fc-cookie">Data Protection</a></li>
             <li><a href="#" id="fc-sitemap">Sitemap</a></li>
           </ul>
         </div>
@@ -640,6 +683,6 @@
   <!-- Chatbot Script -->
   <script src="chatbot.js"></script>
   <!-- AI Features Script -->
-  <script src="ai-features.js"></script>
+  <script src="ai-all-features.js"></script>
 </body>
 </html>

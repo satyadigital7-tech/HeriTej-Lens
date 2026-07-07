@@ -530,6 +530,91 @@
   pointer-events: none;
 }
 
+/* ── Calendar Date Filter Container & Dropdown ── */
+.date-filter-container {
+  position: relative;
+}
+.date-filter-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #fff;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--ff-ui);
+  font-size: 0.82rem;
+  color: var(--clr-dark);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.date-filter-trigger:hover, .date-filter-trigger.active {
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+  background: rgba(181,69,27,0.03);
+}
+
+.calendar-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 290px;
+  background: #fff;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  z-index: 999;
+  padding: 16px;
+  animation: calFadeIn 0.2s ease;
+}
+.calendar-dropdown.open {
+  display: block;
+}
+@keyframes calFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cal-day-btn {
+  background: none;
+  border: none;
+  font-family: var(--ff-ui);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--clr-dark);
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.cal-day-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+.cal-day-btn.empty {
+  cursor: default;
+  pointer-events: none;
+}
+.cal-day-btn.has-news {
+  background: rgba(191,161,95,0.15);
+  color: #7a5a1e;
+  font-weight: 700;
+  border: 1px solid rgba(191,161,95,0.4);
+}
+.cal-day-btn.has-news:hover {
+  background: #bfa15f;
+  color: #0f1a14;
+}
+.cal-day-btn.selected {
+  background: var(--clr-primary) !important;
+  color: #fff !important;
+  border-color: var(--clr-primary) !important;
+}
+
 /* ── Responsive ──────────────────────────────────── */
 @media (max-width: 1024px) {
   .news-grid { grid-template-columns: repeat(2, 1fr); }

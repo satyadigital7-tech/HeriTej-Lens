@@ -777,43 +777,92 @@ ul { list-style: none; }
   line-height: 1.35;
 }
 
-/* ═══════════════ QUOTE SECTION ═══════════════ */
+/* ═══════════════ DID YOU KNOW? SECTION ═══════════════ */
 .quote-section {
-  background: var(--clr-dark);
-  padding: 64px 0;
+  background: linear-gradient(135deg, #fdf7f0 0%, #fef3e8 50%, #fdf7f0 100%);
+  padding: 72px 0;
+  border-top: 1px solid rgba(158,42,43,0.08);
+  border-bottom: 1px solid rgba(158,42,43,0.08);
 }
 .quote-card {
   max-width: 760px;
   margin: 0 auto;
   text-align: center;
-  padding: 0 24px;
+  padding: 40px 56px 44px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(158,42,43,0.1);
+  box-shadow: 0 8px 48px rgba(158,42,43,0.06), 0 2px 12px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
 }
-.quote-icon {
-  font-family: var(--ff-head);
-  font-size: 5rem;
-  line-height: 0.5;
-  color: var(--clr-accent);
-  opacity: 0.6;
-  margin-bottom: 24px;
+
+/* Decorative lightbulb icon — top right */
+.quote-deco-icon {
+  position: absolute;
+  top: 20px; right: 28px;
+  width: 72px; height: 72px;
+  color: rgba(158,42,43,0.12);
+  pointer-events: none;
 }
+.quote-deco-icon svg { width: 100%; height: 100%; }
+
+/* "DID YOU KNOW?" label */
+.quote-label {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--ff-ui); font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--clr-primary); margin-bottom: 20px;
+}
+.quote-label svg { color: var(--clr-primary); flex-shrink: 0; }
+
 .quote-text {
   font-family: var(--ff-head);
-  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
-  font-style: italic;
-  color: rgba(255,255,255,0.9);
-  line-height: 1.65;
-  margin-bottom: 28px;
-  transition: opacity 0.5s ease;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  font-weight: 700;
+  color: var(--clr-dark);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  transition: opacity 0.45s ease;
+}
+
+/* Category tag pill */
+.quote-tag-wrap { margin-bottom: 28px; }
+.quote-cat-tag {
+  display: inline-block;
+  background: var(--clr-primary); color: #fff;
+  font-family: var(--ff-ui); font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 8px 20px; border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.quote-cat-tag:hover { background: var(--clr-primary-lt); transform: translateY(-1px); }
+
+/* Arrow + dots navigation row */
+.quote-nav {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+}
+.quote-arrow {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1.5px solid rgba(158,42,43,0.25);
+  background: transparent; color: var(--clr-primary);
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition); cursor: pointer; flex-shrink: 0;
+}
+.quote-arrow:hover {
+  background: var(--clr-primary); color: #fff;
+  border-color: var(--clr-primary);
+  transform: scale(1.08);
 }
 .quote-dots { display: flex; gap: 8px; justify-content: center; }
 .qdot {
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.3);
+  background: rgba(158,42,43,0.2);
   cursor: pointer;
   transition: var(--transition);
 }
-.qdot.active { background: var(--clr-accent); width: 24px; border-radius: 4px; }
+.qdot.active { background: var(--clr-primary); width: 28px; border-radius: 4px; }
 
 /* ═══════════════ FASHION FUSION ═══════════════ */
 .fashion-section {

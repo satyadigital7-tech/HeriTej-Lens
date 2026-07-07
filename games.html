@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="games.css" />
   <!-- Chatbot CSS -->
   <link rel="stylesheet" href="chatbot.css" />
+  <!-- AI Features CSS -->
+  <link rel="stylesheet" href="ai-all-features.css" />
   <!-- Google Translate File Origin / CORS relative-protocol Fix -->
   <script type="text/javascript">
     (function() {
@@ -135,6 +137,12 @@
 
   <!-- ══════════ FEATURED GAME HERO ══════════ -->
   <section class="game-hero" id="game-hero">
+    <!-- Background image fills the entire hero -->
+    <div class="gh-image" id="gh-image">
+      <img src="images/games/Heritage Master Quiz.png" alt="Heritage Master Quiz" />
+      <div class="gh-img-overlay"></div>
+    </div>
+    <!-- Content overlays the image -->
     <div class="gh-content">
       <div class="gh-text">
         <span class="gh-badge" id="gh-badge">
@@ -165,10 +173,6 @@
           <button class="btn-learn-more" id="btn-learn-hero">Learn More</button>
         </div>
       </div>
-      <div class="gh-image" id="gh-image">
-        <img src="images/game_hero.png" alt="Heritage Master Quiz — Taj Mahal" />
-        <div class="gh-img-overlay"></div>
-      </div>
     </div>
   </section>
 
@@ -195,7 +199,7 @@
         <!-- Game 1 -->
         <div class="game-card" data-cat="heritage-quizzes" id="game-1" onclick="openGame('heritage-master-quiz')">
           <div class="gc-img-wrap">
-            <img src="images/game_heritage_master_quiz.png" alt="Heritage Master Quiz" />
+            <img src="images/games/Heritage Master Quiz.png" alt="Heritage Master Quiz" />
             <span class="gc-difficulty hot">HOT</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -225,7 +229,7 @@
         <!-- Game 2 -->
         <div class="game-card" data-cat="word-games" id="game-2" onclick="openGame('sacred-word-unscramble')">
           <div class="gc-img-wrap">
-            <img src="images/game_sacred_word_unscramble.png" alt="Sacred Word Unscramble" />
+            <img src="images/games/Sacred Word Unscramble.png" alt="Sacred Word Unscramble" />
             <span class="gc-difficulty easy">EASY</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -255,7 +259,7 @@
         <!-- Game 3 -->
         <div class="game-card" data-cat="history-trivia" id="game-3" onclick="openGame('history-trivia-blitz')">
           <div class="gc-img-wrap">
-            <img src="images/game_history_trivia_blitz.png" alt="History Trivia Blitz" />
+            <img src="images/games/History Trivia Blitz.png" alt="History Trivia Blitz" />
             <span class="gc-difficulty hot">HOT</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -285,7 +289,7 @@
         <!-- Game 4 -->
         <div class="game-card" data-cat="word-games" id="game-4" onclick="openGame('heritage-wordle')">
           <div class="gc-img-wrap">
-            <img src="images/game_heritage_wordle.png" alt="Heritage Wordle" />
+            <img src="images/games/Heritage Wordle.jpg" alt="Heritage Wordle" />
             <span class="gc-difficulty medium">MEDIUM</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -315,7 +319,7 @@
         <!-- Game 5 -->
         <div class="game-card" data-cat="puzzle-games" id="game-5" onclick="openGame('monument-memory-match')">
           <div class="gc-img-wrap">
-            <img src="images/game_monument_memory_match.png" alt="Monument Memory Match" />
+            <img src="images/games/Monument Memory Match.png" alt="Monument Memory Match" />
             <span class="gc-difficulty easy">EASY</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -345,7 +349,7 @@
         <!-- Game 6 -->
         <div class="game-card" data-cat="history-trivia" id="game-6" onclick="openGame('timeline-challenge')">
           <div class="gc-img-wrap">
-            <img src="images/game_timeline_challenge.png" alt="Timeline Challenge" />
+            <img src="images/games/Timeline Challenge.png" alt="Timeline Challenge" />
             <span class="gc-difficulty hard">HARD</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -375,7 +379,7 @@
         <!-- Game 7 -->
         <div class="game-card" data-cat="map-games" id="game-7" onclick="openGame('landmark-map-explorer')">
           <div class="gc-img-wrap">
-            <img src="images/game_landmark_map_explorer.png" alt="Landmark Map Explorer" />
+            <img src="images/games/Landmark Map Explorer.png" alt="Landmark Map Explorer" />
             <span class="gc-difficulty medium">MEDIUM</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -405,7 +409,7 @@
         <!-- Game 8 -->
         <div class="game-card" data-cat="heritage-quizzes" id="game-8" onclick="openGame('raga-rasa-matcher')">
           <div class="gc-img-wrap">
-            <img src="images/game_raga_rasa_matcher.png" alt="Raga &amp; Rasa Matcher" />
+            <img src="images/games/Raga & Rasa Matcher.png" alt="Raga &amp; Rasa Matcher" />
             <span class="gc-difficulty medium">MEDIUM</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -435,7 +439,7 @@
         <!-- Game 9 -->
         <div class="game-card" data-cat="puzzle-games" id="game-9" onclick="openGame('architectural-style-matcher')">
           <div class="gc-img-wrap">
-            <img src="images/game_architectural_style_matcher.png" alt="Architectural Style Matcher" />
+            <img src="images/games/Architectural Style Matcher.png" alt="Architectural Style Matcher" />
             <span class="gc-difficulty medium">MEDIUM</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -465,7 +469,7 @@
         <!-- Game 10 -->
         <div class="game-card" data-cat="heritage-quizzes" id="game-10" onclick="openGame('festival-dance-quiz')">
           <div class="gc-img-wrap">
-            <img src="images/game_festival_dance_quiz.png" alt="Festival &amp; Dance Quiz" />
+            <img src="images/games/Festival & Dance Quiz.png" alt="Festival &amp; Dance Quiz" />
             <span class="gc-difficulty easy">EASY</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -495,7 +499,7 @@
         <!-- Game 11 -->
         <div class="game-card" data-cat="history-trivia" id="game-11" onclick="openGame('dynasty-era-connector')">
           <div class="gc-img-wrap">
-            <img src="images/game_dynasty_era_connector.png" alt="Dynasty Era Connector" />
+            <img src="images/games/Dynasty Era Connector.png" alt="Dynasty Era Connector" />
             <span class="gc-difficulty hard">HARD</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -525,7 +529,7 @@
         <!-- Game 12 -->
         <div class="game-card" data-cat="puzzle-games" id="game-12" onclick="openGame('temple-escape-room')">
           <div class="gc-img-wrap">
-            <img src="images/game_temple_escape_room.png" alt="Temple Escape Room" />
+            <img src="images/games/Temple Escape Room.png" alt="Temple Escape Room" />
             <span class="gc-difficulty medium">MEDIUM</span>
             <div class="gc-play-overlay">
               <div class="gc-play-btn">
@@ -568,7 +572,10 @@
   <!-- ══════════ GAME MODAL ══════════ -->
   <div class="game-modal-overlay" id="game-modal-overlay" onclick="closeModal(event)">
     <div class="game-modal" id="game-modal">
-      <button class="modal-close" id="modal-close" onclick="closeGameModal()" aria-label="Close">✕</button>
+      <button class="modal-close" id="modal-close" onclick="closeGameModal()" aria-label="Close">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Quit
+      </button>
       <div class="modal-inner" id="modal-inner">
         <!-- Injected by JS -->
       </div>
@@ -615,9 +622,9 @@
         <div class="footer-col" id="footer-legal">
           <h4>Legal</h4>
           <ul>
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="privacy.html">Privacy & Editorial Guidelines</a></li>
+            <li><a href="privacy.html#feeds">Linking & Feeds Policy</a></li>
+            <li><a href="privacy.html#privacy">Data Protection</a></li>
           </ul>
         </div>
       </div>
@@ -635,5 +642,7 @@
   <script src="games-script.js"></script>
   <!-- Chatbot Script -->
   <script src="chatbot.js"></script>
+  <!-- AI Features Script -->
+  <script src="ai-all-features.js"></script>
 </body>
 </html>

@@ -172,28 +172,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ─── Quotes Rotator ─────────────────────────── */
   const quotes = [
-    "The ancient Nalanda University had a library of 9 million manuscripts — it burned for three months after being attacked in 1193 CE.",
-    "The Kumbh Mela is the world's largest human gathering — up to 120 million people converge across 55 days in one of the oldest pilgrimage traditions.",
-    "India is home to 42 UNESCO World Heritage Sites — more than France, Spain, or Germany — and counting.",
-    "The game of Chess originated in India during the Gupta Empire (around 6th century AD) and was called 'Chaturanga'."
+    { text: '"The ancient Nalanda University had a library of 9 million manuscripts — it burned for three months after being attacked in 1193 CE."', cat: 'ANCIENT LEARNING' },
+    { text: '"The Kumbh Mela is the world\'s largest human gathering — up to 120 million people converge across 55 days in one of the oldest pilgrimage traditions."', cat: 'LIVING TRADITIONS' },
+    { text: '"India is home to 42 UNESCO World Heritage Sites — more than France, Spain, or Germany — and counting."', cat: 'WORLD HERITAGE' },
+    { text: '"The game of Chess originated in India during the Gupta Empire (around 6th century AD) and was called \'Chaturanga\'."', cat: 'CULTURAL LEGACY' }
   ];
   let currentQuote = 0;
   const quoteText  = document.getElementById('quote-text');
+  const quoteCat   = document.getElementById('quote-cat-tag');
   const qdots      = Array.from(document.querySelectorAll('.qdot'));
+  const quotePrev  = document.getElementById('quote-prev');
+  const quoteNext  = document.getElementById('quote-next');
 
   function showQuote(idx) {
     if (!quoteText) return;
     quoteText.style.opacity = '0';
+    if (quoteCat) quoteCat.style.opacity = '0';
     setTimeout(() => {
       currentQuote = (idx + quotes.length) % quotes.length;
-      quoteText.textContent = quotes[currentQuote];
+      quoteText.textContent = quotes[currentQuote].text;
       quoteText.style.opacity = '1';
+      if (quoteCat) {
+        quoteCat.textContent = quotes[currentQuote].cat;
+        quoteCat.style.opacity = '1';
+      }
       qdots.forEach((d, i) => d.classList.toggle('active', i === currentQuote));
     }, 400);
   }
 
-  qdots.forEach((d, i) => d.addEventListener('click', () => showQuote(i)));
-  setInterval(() => showQuote(currentQuote + 1), 7000);
+  qdots.forEach((d, i) => d.addEventListener('click', () => { clearInterval(quoteTimer); showQuote(i); quoteTimer = setInterval(() => showQuote(currentQuote + 1), 7000); }));
+  quotePrev?.addEventListener('click', () => { clearInterval(quoteTimer); showQuote(currentQuote - 1); quoteTimer = setInterval(() => showQuote(currentQuote + 1), 7000); });
+  quoteNext?.addEventListener('click', () => { clearInterval(quoteTimer); showQuote(currentQuote + 1); quoteTimer = setInterval(() => showQuote(currentQuote + 1), 7000); });
+  let quoteTimer = setInterval(() => showQuote(currentQuote + 1), 7000);
 
   /* ─── Social Counter Animation ───────────────── */
   function animateCounter(el, target) {

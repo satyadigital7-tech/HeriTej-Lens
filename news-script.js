@@ -44,44 +44,228 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') searchOverlay?.classList.remove('open');
   });
 
-  /* ─── Category Filter ────────────────────────── */
+  /* ─── Category & Calendar Date Filter ────────────────────────── */
   const filterBtns = Array.from(document.querySelectorAll('.cat-filter'));
   const cards      = Array.from(document.querySelectorAll('.news-card'));
   const noResults  = document.getElementById('no-results');
   const countNum   = document.getElementById('count-num');
 
-  function filterCards(cat) {
-    let visible = 0;
-
-    cards.forEach((card, i) => {
-      const cardCat = card.dataset.cat;
-      const show    = cat === 'all' || cardCat === cat;
-
-      if (show) {
-        card.style.display = '';
-        // Re-trigger animation with stagger
-        card.style.animation = 'none';
-        card.offsetHeight; // reflow
-        card.style.animation = `cardAppear 0.4s ease ${i * 40}ms forwards`;
-        card.style.opacity   = '0';
-        visible++;
-      } else {
-        card.style.display = 'none';
+  // Parse all dates from elements dynamically
+  const articlesData = cards.map(card => {
+    const dateText = card.querySelector('.nc-date')?.textContent?.trim();
+    let parsedDate = null;
+    if (dateText) {
+      const d = new Date(dateText);
+      if (!isNaN(d.getTime())) {
+        parsedDate = d;
       }
-    });
+    }
+    return {
+      element: card,
+      date: parsedDate,
+      dateText: dateText,
+      cat: card.dataset.cat
+    };
+  });
 
-    if (countNum) countNum.textContent = visible;
+  // Calendar State
+  let calSelectedDate = null;
+  let calDisplayMonth = 6; // July (0-indexed)
+  let calDisplayYear = 2026;
 
-    if (noResults) {
-      noResults.style.display = visible === 0 ? 'block' : 'none';
+  // Toggle Dropdown
+  const dateBtn = document.getElementById('date-filter-btn');
+  const dropdown = document.getElementById('calendar-dropdown');
+  dateBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown?.classList.toggle('open');
+    dateBtn.setAttribute('aria-expanded', dropdown?.classList.contains('open'));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (dropdown && !dropdown.contains(e.target) && e.target !== dateBtn) {
+      dropdown.classList.remove('open');
+      dateBtn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Setup Month/Year selection handlers
+  const monthSelect = document.getElementById('cal-month');
+  const yearSelect = document.getElementById('cal-year');
+
+  monthSelect?.addEventListener('change', function() {
+    if (this.value !== '') {
+      calDisplayMonth = parseInt(this.value, 10);
+    }
+    calSelectedDate = null; // Clear specific day selection since we filter by month
+    renderCalendarGrid();
+    updateNewsFilter();
+  });
+
+  yearSelect?.addEventListener('change', function() {
+    if (this.value !== '') {
+      calDisplayYear = parseInt(this.value, 10);
+    }
+    calSelectedDate = null; // Clear specific day selection
+    renderCalendarGrid();
+    updateNewsFilter();
+  });
+
+  document.getElementById('cal-clear-btn')?.addEventListener('click', () => {
+    calSelectedDate = null;
+    if (monthSelect) monthSelect.value = '';
+    if (yearSelect) yearSelect.value = '';
+    renderCalendarGrid();
+    updateNewsFilter();
+  });
+
+  function renderCalendarGrid() {
+    const grid = document.getElementById('cal-days-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    const firstDay = new Date(calDisplayYear, calDisplayMonth, 1).getDay();
+    const totalDays = new Date(calDisplayYear, calDisplayMonth + 1, 0).getDate();
+
+    // Empty spaces before first day of month
+    for (let i = 0; i < firstDay; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'cal-day-btn empty';
+      grid.appendChild(cell);
+    }
+
+    // Days grid
+    for (let day = 1; day <= totalDays; day++) {
+      const btn = document.createElement('button');
+      btn.className = 'cal-day-btn';
+      btn.textContent = day;
+
+      const currentBtnDate = new Date(calDisplayYear, calDisplayMonth, day);
+
+      const hasNews = articlesData.some(art => {
+        return art.date &&
+               art.date.getDate() === day &&
+               art.date.getMonth() === calDisplayMonth &&
+               art.date.getFullYear() === calDisplayYear;
+      });
+
+      if (hasNews) {
+        btn.classList.add('has-news');
+      }
+
+      const isSelected = calSelectedDate &&
+                         calSelectedDate.getDate() === day &&
+                         calSelectedDate.getMonth() === calDisplayMonth &&
+                         calSelectedDate.getFullYear() === calDisplayYear;
+
+      if (isSelected) {
+        btn.classList.add('selected');
+      }
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isSelected) {
+          calSelectedDate = null;
+        } else {
+          calSelectedDate = currentBtnDate;
+        }
+        renderCalendarGrid();
+        updateNewsFilter();
+      });
+
+      grid.appendChild(btn);
+    }
+
+    const label = document.getElementById('cal-selected-label');
+    if (label) {
+      if (calSelectedDate) {
+        label.textContent = calSelectedDate.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+      } else {
+        label.textContent = 'None selected';
+      }
     }
   }
 
+  function updateNewsFilter() {
+    const activeCatBtn = document.querySelector('.cat-filter.active');
+    const cat = activeCatBtn ? activeCatBtn.dataset.cat : 'all';
+
+    const selectedMonthVal = monthSelect ? monthSelect.value : '';
+    const selectedYearVal = yearSelect ? yearSelect.value : '';
+
+    let visibleCount = 0;
+
+    articlesData.forEach((art, i) => {
+      let show = true;
+
+      // 1. Category Filter
+      if (cat !== 'all' && art.cat !== cat) {
+        show = false;
+      }
+
+      // 2. Date Filter
+      if (show && art.date) {
+        if (calSelectedDate) {
+          const matchesDay = art.date.getDate() === calSelectedDate.getDate() &&
+                             art.date.getMonth() === calSelectedDate.getMonth() &&
+                             art.date.getFullYear() === calSelectedDate.getFullYear();
+          if (!matchesDay) show = false;
+        } else {
+          if (selectedMonthVal !== '') {
+            const m = parseInt(selectedMonthVal, 10);
+            if (art.date.getMonth() !== m) show = false;
+          }
+          if (selectedYearVal !== '') {
+            const y = parseInt(selectedYearVal, 10);
+            if (art.date.getFullYear() !== y) show = false;
+          }
+        }
+      } else if (show && !art.date && (calSelectedDate || selectedMonthVal !== '' || selectedYearVal !== '')) {
+        show = false;
+      }
+
+      if (show) {
+        art.element.style.display = '';
+        // Re-trigger animation with stagger
+        art.element.style.animation = 'none';
+        art.element.offsetHeight; // reflow
+        art.element.style.animation = `cardAppear 0.4s ease ${visibleCount * 40}ms forwards`;
+        art.element.style.opacity   = '0';
+        visibleCount++;
+      } else {
+        art.element.style.display = 'none';
+      }
+    });
+
+    if (countNum) countNum.textContent = visibleCount;
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    if (dateBtn) {
+      if (calSelectedDate || selectedMonthVal !== '' || selectedYearVal !== '') {
+        dateBtn.classList.add('active');
+        let filterLabel = '📅 Filter Active';
+        if (calSelectedDate) {
+          filterLabel = `📅 ${calSelectedDate.getDate()} ${calSelectedDate.toLocaleDateString('en-IN', {month:'short'})}`;
+        } else if (selectedMonthVal !== '') {
+          const monthName = monthSelect.options[monthSelect.selectedIndex].text;
+          filterLabel = `📅 ${monthName}`;
+        }
+        dateBtn.textContent = filterLabel;
+      } else {
+        dateBtn.classList.remove('active');
+        dateBtn.textContent = '📅 Filter by Date';
+      }
+    }
+  }
+
+  // Filter category button handlers
   filterBtns.forEach(btn => {
     btn.addEventListener('click', function () {
       filterBtns.forEach(b => b.classList.remove('active'));
       this.classList.add('active');
-      filterCards(this.dataset.cat);
+      updateNewsFilter();
     });
   });
 
@@ -93,7 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (targetBtn) {
       filterBtns.forEach(b => b.classList.remove('active'));
       targetBtn.classList.add('active');
-      filterCards(catParam);
     }
   }
 
@@ -101,8 +284,16 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-reset-filter')?.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
     filterBtns[0]?.classList.add('active');
-    filterCards('all');
+    calSelectedDate = null;
+    if (monthSelect) monthSelect.value = '';
+    if (yearSelect) yearSelect.value = '';
+    renderCalendarGrid();
+    updateNewsFilter();
   });
+
+  // Initial Calendar Grid Load
+  renderCalendarGrid();
+  updateNewsFilter();
 
   /* ─── View Toggle (Grid / List) ──────────────── */
   const newsGrid    = document.getElementById('news-grid');
@@ -244,13 +435,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ─── News Card Click → Article Page ───────── */
-  document.querySelectorAll('.news-card').forEach((card, idx) => {
+  document.querySelectorAll('.news-card').forEach((card) => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', function (e) {
       // Don't navigate if clicking bookmark button
       if (e.target.closest('.nc-bookmark')) return;
-      // Map card index to article id (1-based, matching ARTICLES object)
-      const articleId = (idx + 1).toString();
+      // Resolve article ID from dataset or ID attribute
+      const articleId = this.dataset.articleId || this.id.replace('article-', '');
       window.location.href = `article.html?id=${articleId}`;
     });
   });

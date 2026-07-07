@@ -224,28 +224,6 @@ const ARTICLES = {
       "As the festival gains global popularity, communities in London, New York, and Sydney host similar massive Garba events, connecting the diaspora with their cultural roots."
     ]
   },
-  '11': {
-    id: '11',
-    category: 'culture',
-    categoryLabel: 'Culture & Arts',
-    title: 'Bharatanatyam Goes Global: A Traditional Dance That Wowed Paris',
-    subtitle: 'The ancient Tamil temple dance form electrified audiences at the Paris Opera House in its most celebrated international debut.',
-    author: 'Rukmini Devi',
-    authorInitials: 'RD',
-    authorColor: '#7a5ac0',
-    authorBio: 'Rukmini is a dance critique and choreographic researcher with 15 years of experience in classical arts.',
-    date: 'June 27, 2026',
-    readTime: '6 min read',
-    image: 'images/spotlight1.png',
-    imageCaption: 'A dancer portraying a mudra (hand gesture) on stage in Paris. Photo: Paris Opera House',
-    tags: ['Bharatanatyam', 'Classical Dance', 'Paris', 'Tamil Nadu', 'Performance'],
-    bcCat: 'Culture & Arts',
-    paragraphs: [
-      "Bharatanatyam, the classical dance of Tamil Nadu, received a standing ovation during its debut performance at the Paris Opera House. The performance highlighted the complex footwork and expressive hand gestures characteristic of the dance.",
-      "Originally performed in temples as a form of worship, the dance has transitioned into global theatrical spaces, showing that ancient storytelling mediums remain relevant to modern audiences.",
-      "Collaborations between Indian choreographers and Western dancers are creating a dialogue, blending Bharatanatyam with contemporary ballet."
-    ]
-  },
   '12': {
     id: '12',
     category: 'spirituality',
@@ -289,6 +267,28 @@ const ARTICLES = {
       "He went beyond simple fusion to establish classical Indian music as a rigorous, respected art form in the West, performing at major festivals and writing classical concertos.",
       "His musical legacy continues to inspire modern instrumentalists, demonstrating how traditional instruments can transcend borders and build cultural connections."
     ]
+  },
+  '14': {
+    id: '14',
+    category: 'fashion',
+    categoryLabel: 'Fashion Fusion',
+    title: "Indian Heritage Walks the Paris Haute Couture Runway",
+    subtitle: "Indian couturier Manish Malhotra is set to make his debut at Paris Haute Couture Week 2026, becoming only the fourth Indian designer invited to the world's most prestigious haute couture platform.",
+    author: 'Sneha Mishra',
+    authorInitials: 'SM',
+    authorColor: '#c05ab2',
+    authorBio: 'Sneha covers contemporary Indian fashion, luxury couture, and the globalization of traditional Indian textiles.',
+    date: 'July 4, 2026',
+    readTime: '4 min read',
+    image: 'images/news.avif',
+    imageCaption: 'Manish Malhotra Haute Couture showcase in Paris — celebrating traditional Indian craftsmanship. Photo: Getty Images',
+    tags: ['Manish Malhotra', 'Paris Haute Couture', 'Indian Fashion', 'Zardozi'],
+    bcCat: 'Fashion Fusion',
+    paragraphs: [
+      "Indian fashion has reached a monumental milestone as couturier Manish Malhotra receives an official invitation from the Fédération de la Haute Couture et de la Mode to showcase at Paris Haute Couture Week in January 2026. This prestigious invitation places Malhotra in an elite circle, making him only the fourth Indian designer in history to be extended this honor, following Rahul Mishra, Vaishali S, and Gaurav Gupta.",
+      "Known for reviving heritage Indian weaves and embroidery techniques, Malhotra plans to present a collection that marries classic silhouettes with ancestral craftsmanship. The showcase is expected to heavily feature Zardozi, Chikankari, and hand-woven Banarasi silks, presenting them not just as historical crafts, but as modern definitions of global luxury.",
+      "The global fashion community is eagerly anticipating the collection, which represents a broader shift towards honoring local cultural identities on international runways. By translating the complex math and geometry of Indian artisans into haute couture drape, the debut promises to showcase the living pulse of India's textile legacy to the world's most influential fashion critics."
+    ]
   }
 };
 
@@ -303,6 +303,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ─── Load Article from URL Params ──────────────*/
+  // Append source metadata to articles database
+  if (ARTICLES['1'])  { ARTICLES['1'].sourceName = 'Archaeological Survey of India'; ARTICLES['1'].sourceUrl = 'https://asi.nic.in'; }
+  if (ARTICLES['2'])  { ARTICLES['2'].sourceName = 'IIT Delhi Research Division'; ARTICLES['2'].sourceUrl = 'https://iitd.ac.in'; }
+  if (ARTICLES['3'])  { ARTICLES['3'].sourceName = 'INTACH Heritage Conservation'; ARTICLES['3'].sourceUrl = 'https://www.intach.org'; }
+  if (ARTICLES['4'])  { ARTICLES['4'].sourceName = 'Karnataka Tourism Development'; ARTICLES['4'].sourceUrl = 'https://www.karnatakatourism.org'; }
+  if (ARTICLES['14']) { ARTICLES['14'].sourceName = 'Fédération de la Haute Couture'; ARTICLES['14'].sourceUrl = 'https://fhcm.paris/en/'; }
+
   const params    = new URLSearchParams(window.location.search);
   const articleId = params.get('id') || '2'; // default to Khajuraho
   const article   = ARTICLES[articleId];
@@ -357,7 +364,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dynamic Article Body Paragraphs Injection
     const bodyEl = document.getElementById('article-body');
     if (bodyEl && a.paragraphs) {
-      bodyEl.innerHTML = a.paragraphs.map(p => `<p>${p}</p>`).join('');
+      let htmlContent = a.paragraphs.map(p => `<p>${p}</p>`).join('');
+      if (a.sourceName && a.sourceUrl) {
+        htmlContent += `
+          <div class="article-source" style="margin-top:36px;padding-top:20px;border-top:1.5px dashed var(--clr-border);display:flex;align-items:center;gap:8px;font-family:var(--ff-ui);font-size:0.8rem;color:var(--clr-text-muted);">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--clr-primary);"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/></svg>
+            <span>Origin Story:</span>
+            <a href="${a.sourceUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--clr-primary);font-weight:700;text-decoration:underline;transition:color 0.2s;" onmouseover="this.style.color='var(--clr-primary-lt)'" onmouseout="this.style.color='var(--clr-primary)'">
+              ${a.sourceName}
+            </a>
+          </div>
+        `;
+      }
+      bodyEl.innerHTML = htmlContent;
     }
 
     // Tags

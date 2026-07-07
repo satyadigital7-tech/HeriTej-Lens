@@ -23,7 +23,7 @@ const GAMES_DATA = {
   'heritage-master-quiz': {
     gameType: 'quiz',
     title: 'Heritage Master Quiz', badge: 'Heritage Quizzes', badgeColor: '#7a4a2e',
-    difficulty: 'HOT', image: 'images/game_heritage_master_quiz.png',
+    difficulty: 'HOT', image: 'images/games/Heritage Master Quiz.png',
     desc: '5,000 years of Indian civilisation. Mughal emperors, ancient temples, sacred texts.',
     players: '47,482', rating: '4.8 ★', time: '~15 min',
     questions_data: [
@@ -38,7 +38,7 @@ const GAMES_DATA = {
   'sacred-word-unscramble': {
     gameType: 'unscramble',
     title: 'Sacred Word Unscramble', badge: 'Word Games', badgeColor: '#4a5e8c',
-    difficulty: 'EASY', image: 'images/game_sacred_word_unscramble.png',
+    difficulty: 'EASY', image: 'images/games/Sacred Word Unscramble.png',
     desc: 'Tap scrambled letters to spell out heritage words. Easy to start, fiendishly addictive!',
     players: '8,300', rating: '4.5 ★', time: '~8 min',
     questions_data: [
@@ -53,7 +53,7 @@ const GAMES_DATA = {
   'history-trivia-blitz': {
     gameType: 'blitz',
     title: 'History Trivia Blitz', badge: 'History Trivia', badgeColor: '#5a3d82',
-    difficulty: 'HOT', image: 'images/game_history_trivia_blitz.png',
+    difficulty: 'HOT', image: 'images/games/History Trivia Blitz.png',
     desc: '8 seconds per question! Build streaks, earn multipliers, smash your high score!',
     players: '74,100', rating: '4.9 ★', time: '~5 min',
     questions_data: [
@@ -71,7 +71,7 @@ const GAMES_DATA = {
   'heritage-wordle': {
     gameType: 'wordle',
     title: 'Heritage Wordle', badge: 'Word Games', badgeColor: '#4a5e8c',
-    difficulty: 'MEDIUM', image: 'images/game_heritage_wordle.png',
+    difficulty: 'MEDIUM', image: 'images/games/Heritage Wordle.jpg',
     desc: 'Guess the 5-letter heritage word in 6 attempts. Green = right spot, Yellow = wrong spot!',
     players: '19,993', rating: '4.7 ★', time: '~5 min',
     wordle_word: 'STUPA',
@@ -82,7 +82,7 @@ const GAMES_DATA = {
   'monument-memory-match': {
     gameType: 'memory',
     title: 'Monument Memory Match', badge: 'Puzzle Games', badgeColor: '#1e6e6e',
-    difficulty: 'EASY', image: 'images/game_monument_memory_match.png',
+    difficulty: 'EASY', image: 'images/games/Monument Memory Match.png',
     desc: 'Flip cards to find matching monument-location pairs. Test your visual memory!',
     players: '8,099', rating: '4.4 ★', time: '~10 min',
     memory_pairs: [
@@ -100,7 +100,7 @@ const GAMES_DATA = {
   'timeline-challenge': {
     gameType: 'timeline',
     title: 'Timeline Challenge', badge: 'History Trivia', badgeColor: '#5a3d82',
-    difficulty: 'HARD', image: 'images/game_timeline_challenge.png',
+    difficulty: 'HARD', image: 'images/games/Timeline Challenge.png',
     desc: 'Click events in chronological order — earliest to latest. Master 5,000 years of Indian history!',
     players: '18,455', rating: '4.6 ★', time: '~20 min',
     questions_data: [
@@ -140,7 +140,7 @@ const GAMES_DATA = {
   'landmark-map-explorer': {
     gameType: 'quiz',
     title: 'Landmark Map Explorer', badge: 'Map Games', badgeColor: '#2e5c8a',
-    difficulty: 'MEDIUM', image: 'images/game_landmark_map_explorer.png',
+    difficulty: 'MEDIUM', image: 'images/games/Landmark Map Explorer.png',
     desc: "Locate India's historic monuments and UNESCO World Heritage Sites on the map!",
     players: '14,600', rating: '4.5 ★', time: '~12 min',
     questions_data: [
@@ -155,7 +155,7 @@ const GAMES_DATA = {
   'raga-rasa-matcher': {
     gameType: 'matcher',
     title: 'Raga and Rasa Matcher', badge: 'Heritage Quizzes', badgeColor: '#7a4a2e',
-    difficulty: 'MEDIUM', image: 'images/game_raga_rasa_matcher.png',
+    difficulty: 'MEDIUM', image: 'images/games/Raga & Rasa Matcher.png',
     desc: "Match Ragas with their time, season, and mood. Discover India's classical music heritage!",
     players: '7,600', rating: '4.3 ★', time: '~10 min',
     questions_data: [
@@ -183,7 +183,7 @@ const GAMES_DATA = {
   'architectural-style-matcher': {
     gameType: 'matcher',
     title: 'Architectural Style Matcher', badge: 'Puzzle Games', badgeColor: '#1e6e6e',
-    difficulty: 'MEDIUM', image: 'images/game_architectural_style_matcher.png',
+    difficulty: 'MEDIUM', image: 'images/games/Architectural Style Matcher.png',
     desc: 'Match monuments to architectural styles — Dravidian, Nagara, Vesara, or Indo-Islamic?',
     players: '11,700', rating: '4.6 ★', time: '~12 min',
     questions_data: [
@@ -211,7 +211,7 @@ const GAMES_DATA = {
   'festival-dance-quiz': {
     gameType: 'quiz',
     title: 'Festival and Dance Quiz', badge: 'Heritage Quizzes', badgeColor: '#7a4a2e',
-    difficulty: 'EASY', image: 'images/game_festival_dance_quiz.png',
+    difficulty: 'EASY', image: 'images/games/Festival & Dance Quiz.png',
     desc: "Match India's vibrant folk dances and festivals with their originating states!",
     players: '8,450', rating: '4.4 ★', time: '~8 min',
     questions_data: [
@@ -226,7 +226,7 @@ const GAMES_DATA = {
   'dynasty-era-connector': {
     gameType: 'matcher',
     title: 'Dynasty Era Connector', badge: 'History Trivia', badgeColor: '#5a3d82',
-    difficulty: 'HARD', image: 'images/game_dynasty_era_connector.png',
+    difficulty: 'HARD', image: 'images/games/Dynasty Era Connector.png',
     desc: 'Match emperors, dynasties, and eras of ancient and medieval India. For true history buffs!',
     players: '13,480', rating: '4.7 ★', time: '~18 min',
     questions_data: [
@@ -254,7 +254,7 @@ const GAMES_DATA = {
   'temple-escape-room': {
     gameType: 'escape',
     title: 'Temple Escape Room', badge: 'Puzzle Games', badgeColor: '#1e6e6e',
-    difficulty: 'MEDIUM', image: 'images/game_temple_escape_room.png',
+    difficulty: 'MEDIUM', image: 'images/games/Temple Escape Room.png',
     desc: "You are trapped inside an ancient Indian temple. Decipher clues and escape using heritage knowledge!",
     players: '18,900', rating: '4.8 ★', time: '~25 min',
     questions_data: [
@@ -333,6 +333,117 @@ let matchMatched  = new Set();
 let matchLeftOrd  = [];
 let matchRightOrd = [];
 
+/* ══════════════════════════════════════════════════
+   AI ENGINE: DIFFICULTY ADAPTER & KNOWLEDGE SCORE (IQ)
+══════════════════════════════════════════════════ */
+function getAdjustedDifficulty(gameTitle) {
+  const history = JSON.parse(localStorage.getItem('heritej_game_history') || '[]');
+  const gameStats = history.filter(h => h.gameTitle === gameTitle);
+  if (gameStats.length === 0) return 'Standard';
+  const avgAccuracy = gameStats.reduce((sum, h) => sum + h.accuracy, 0) / gameStats.length;
+  if (avgAccuracy >= 80) return 'AI-Hardened (Fast Timer)';
+  if (avgAccuracy <= 40) return 'AI-Guided (Extra Time)';
+  return 'AI-Balanced';
+}
+
+function getTimerMultiplier(gameTitle) {
+  const diff = getAdjustedDifficulty(gameTitle);
+  if (diff.includes('Hardened')) return 0.7;  // 30% less time
+  if (diff.includes('Guided')) return 1.4;    // 40% more time
+  return 1.0;
+}
+
+function getGameCategory(gameTitle) {
+  const id = gameTitle.toLowerCase();
+  if (id.includes('quiz') || id.includes('blitz') || id.includes('connector') || id.includes('timeline')) {
+    if (id.includes('dance') || id.includes('festival')) return 'Culture';
+    return 'History';
+  }
+  if (id.includes('unscramble') || id.includes('wordle') || id.includes('memory')) return 'Word/Logic';
+  if (id.includes('map') || id.includes('architectural') || id.includes('escape')) return 'Architecture';
+  if (id.includes('raga') || id.includes('rasa')) return 'Culture';
+  return 'History';
+}
+
+function recordGameResult(gameTitle, scoreVal, accuracyVal) {
+  const category = getGameCategory(gameTitle);
+  const history = JSON.parse(localStorage.getItem('heritej_game_history') || '[]');
+  history.push({
+    gameTitle,
+    score: scoreVal,
+    accuracy: accuracyVal,
+    category,
+    date: new Date().toISOString()
+  });
+  localStorage.setItem('heritej_game_history', JSON.stringify(history));
+}
+
+function calculateHeritageIQ() {
+  const history = JSON.parse(localStorage.getItem('heritej_game_history') || '[]');
+  const categories = { 'History': 100, 'Architecture': 100, 'Culture': 100, 'Word/Logic': 100 };
+  history.forEach(h => {
+    const cat = h.category || 'History';
+    const points = Math.round(h.score * (h.accuracy / 100) * 0.15);
+    categories[cat] = Math.min(1000, (categories[cat] || 100) + points);
+  });
+  const totalIQ = Math.round(Object.values(categories).reduce((sum, v) => sum + v, 0) / 4);
+  return { categories, totalIQ };
+}
+
+function buildHeritageIQPanel() {
+  const { categories, totalIQ } = calculateHeritageIQ();
+  const valH = (categories['History'] / 1000) * 40;
+  const valW = (categories['Word/Logic'] / 1000) * 40;
+  const valC = (categories['Culture'] / 1000) * 40;
+  const valA = (categories['Architecture'] / 1000) * 40;
+  const points = `50,${50 - valH} ${50 + valW},50 50,${50 + valC} ${50 - valA},50`;
+  const badge = totalIQ >= 600 ? '👑 Heritage Master' : totalIQ >= 400 ? '🛡️ Heritage Guardian' : totalIQ >= 250 ? '📜 Heritage Scholar' : '🌱 Heritage Neophyte';
+
+  return `
+    <div class="hiq-panel" style="text-align:left;margin-top:20px;">
+      <div class="hiq-header" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span class="hiq-badge-icon" style="font-size:1.8rem;">📊</span>
+        <div>
+          <span class="hiq-title" style="font-family:var(--ff-ui);font-size:0.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#bfa15f;">AI Heritage IQ Status</span>
+          <div class="hiq-score-big" style="font-family:var(--ff-head);font-size:1.8rem;font-weight:700;color:#fff;">${totalIQ} IQ</div>
+          <div class="hiq-score-label" style="font-family:var(--ff-ui);font-size:0.72rem;color:rgba(255,255,255,0.6);">${badge}</div>
+        </div>
+      </div>
+      <div class="hiq-radar-wrap" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <svg class="hiq-radar-svg" width="90" height="90" viewBox="0 0 100 100" style="background:rgba(255,255,255,0.03);border-radius:10px;border:1px solid rgba(255,255,255,0.1);flex-shrink:0;">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.75" />
+          <circle cx="50" cy="50" r="25" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.75" />
+          <line x1="50" y1="10" x2="50" y2="90" stroke="rgba(255,255,255,0.15)" stroke-width="0.75" />
+          <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(255,255,255,0.15)" stroke-width="0.75" />
+          <polygon points="${points}" fill="rgba(191,161,95,0.4)" stroke="#bfa15f" stroke-width="1.5" />
+        </svg>
+        <div class="hiq-legend" style="flex:1;display:flex;flex-direction:column;gap:5px;">
+          <div class="hiq-legend-item" style="display:flex;align-items:center;gap:8px;font-family:var(--ff-ui);font-size:0.7rem;color:rgba(255,255,255,0.75);">
+            <span style="width:70px;white-space:nowrap;">History:</span>
+            <div style="flex:1;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;"><div style="background:#ef4444;height:100%;width:${categories['History']/10}%;"></div></div>
+            <span style="font-weight:700;min-width:24px;text-align:right;">${categories['History']}</span>
+          </div>
+          <div class="hiq-legend-item" style="display:flex;align-items:center;gap:8px;font-family:var(--ff-ui);font-size:0.7rem;color:rgba(255,255,255,0.75);">
+            <span style="width:70px;white-space:nowrap;">Architecture:</span>
+            <div style="flex:1;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;"><div style="background:#3b82f6;height:100%;width:${categories['Architecture']/10}%;"></div></div>
+            <span style="font-weight:700;min-width:24px;text-align:right;">${categories['Architecture']}</span>
+          </div>
+          <div class="hiq-legend-item" style="display:flex;align-items:center;gap:8px;font-family:var(--ff-ui);font-size:0.7rem;color:rgba(255,255,255,0.75);">
+            <span style="width:70px;white-space:nowrap;">Culture:</span>
+            <div style="flex:1;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;"><div style="background:#10b981;height:100%;width:${categories['Culture']/10}%;"></div></div>
+            <span style="font-weight:700;min-width:24px;text-align:right;">${categories['Culture']}</span>
+          </div>
+          <div class="hiq-legend-item" style="display:flex;align-items:center;gap:8px;font-family:var(--ff-ui);font-size:0.7rem;color:rgba(255,255,255,0.75);">
+            <span style="width:70px;white-space:nowrap;">Word/Logic:</span>
+            <div style="flex:1;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;"><div style="background:#f59e0b;height:100%;width:${categories['Word/Logic']/10}%;"></div></div>
+            <span style="font-weight:700;min-width:24px;text-align:right;">${categories['Word/Logic']}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -373,12 +484,23 @@ function buildIntro(game) {
     wordle:'Wordle Grid', memory:'Memory Match', timeline:'Timeline Ordering',
     matcher:'Pair Matching', escape:'Escape Room'
   };
+  const adaptiveDiff = getAdjustedDifficulty(game.title);
+  let difficultyAdaptHTML = '';
+  if (adaptiveDiff !== 'Standard') {
+    difficultyAdaptHTML = `
+      <div class="diff-adapt-bar" style="margin-bottom:16px;background:rgba(191,161,95,0.08);border:1px solid rgba(191,161,95,0.2);border-radius:6px;padding:8px 14px;font-family:var(--ff-ui);font-size:0.75rem;color:rgba(0,0,0,0.7);text-align:left;">
+        <span class="da-label" style="color:#bfa15f;font-weight:700;">✨ AI Difficulty Adapter:</span>
+        Calibrated to: <strong>${adaptiveDiff}</strong>
+      </div>
+    `;
+  }
   return `
     <img class="modal-hero-img" src="${game.image}" alt="${game.title}" />
     <div class="modal-body">
       <span class="modal-badge" style="background:${game.badgeColor}">${game.badge}</span>
       <h2 class="modal-title">${game.title}</h2>
       <p class="modal-desc">${game.desc}</p>
+      ${difficultyAdaptHTML}
       <div style="display:inline-flex;align-items:center;gap:6px;background:var(--clr-bg-alt);border:1.5px solid var(--clr-border);border-radius:100px;padding:6px 14px;margin-bottom:16px;font-family:var(--ff-ui);font-size:0.75rem;color:var(--clr-text-muted);">
         🎮 ${typeLabels[game.gameType] || 'Game'} &nbsp;·&nbsp; ${game.difficulty}
       </div>
@@ -422,7 +544,7 @@ function renderQuizQ() {
   const qData = currentGame.questions_data;
   if (currentQ >= qData.length) { showQuizResult(); return; }
   const q = qData[currentQ];
-  answered = false; timeLeft = 15;
+  answered = false; timeLeft = Math.round(15 * getTimerMultiplier(currentGame.title));
   document.getElementById('modal-inner').innerHTML = `
     <div style="padding:20px 24px 0;display:flex;align-items:center;gap:12px;">
       <div style="flex:1;background:var(--clr-border);border-radius:100px;height:6px;overflow:hidden;">
@@ -469,6 +591,7 @@ window.answerQuiz = window.answerQuestion = function (idx) {
 function showQuizResult() {
   const total = currentGame.questions_data.length;
   const pct   = Math.round((score / (total * 25)) * 100);
+  recordGameResult(currentGame.title, score, pct);
   const grade = pct>=80?'Heritage Master!':pct>=60?'Heritage Scholar':pct>=40?'Heritage Learner':'Heritage Beginner';
   document.getElementById('modal-inner').innerHTML = `
     <div style="padding:40px 32px;text-align:center;">
@@ -478,7 +601,8 @@ function showQuizResult() {
       <div style="display:flex;gap:16px;justify-content:center;margin-bottom:24px;flex-wrap:wrap;">
         ${statBox(score,'Score','var(--clr-primary)')}${statBox(pct+'%','Accuracy','#2e8b57')}${statBox(total,'Questions','var(--clr-accent)')}
       </div>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      ${buildHeritageIQPanel()}
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
         <button onclick="startGame()" style="${btnStyle('var(--clr-primary)')}">Play Again</button>
         <button onclick="closeGameModal()" style="${btnStyleOutline()}">More Games</button>
       </div>
@@ -490,7 +614,7 @@ function renderBlitzQ() {
   const qData = currentGame.questions_data;
   if (currentQ >= qData.length) { showBlitzResult(); return; }
   const q = qData[currentQ];
-  answered = false; timeLeft = 8;
+  answered = false; timeLeft = Math.round(8 * getTimerMultiplier(currentGame.title));
   const streakTxt = blitzStreak > 0
     ? `<span style="color:#f59e0b;font-weight:800;">🔥 ${blitzStreak} Streak</span>${blitzMulti>1?'<span style="background:#e53e1e;color:#fff;padding:1px 7px;border-radius:100px;font-size:0.7rem;font-weight:800;margin-left:6px;">'+blitzMulti+'x</span>':''}`
     : '';
@@ -543,13 +667,16 @@ window.answerBlitz = function (idx) {
 };
 
 function showBlitzResult() {
+  const pct = score >= 120 ? 95 : score >= 85 ? 80 : score >= 55 ? 60 : 40;
+  recordGameResult(currentGame.title, score, pct);
   document.getElementById('modal-inner').innerHTML = `
     <div style="background:linear-gradient(135deg,#1a0a2e,#2d1857);padding:48px 32px;text-align:center;">
       <div style="font-size:3.5rem;margin-bottom:12px;">⚡</div>
       <h2 style="font-family:var(--ff-head);font-size:1.6rem;color:#f59e0b;margin-bottom:6px;">Blitz Complete!</h2>
       <div style="font-family:var(--ff-head);font-size:3.5rem;font-weight:800;color:#fff;margin:20px 0;">${score}</div>
       <div style="font-family:var(--ff-ui);font-size:0.72rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:2px;margin-bottom:28px;">TOTAL SCORE</div>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      ${buildHeritageIQPanel()}
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
         <button onclick="startGame()" style="background:#f59e0b;color:#1a0a2e;font-family:var(--ff-ui);font-size:0.9rem;font-weight:800;padding:14px 28px;border-radius:var(--radius-sm);cursor:pointer;border:none;">Play Again</button>
         <button onclick="closeGameModal()" style="background:rgba(255,255,255,0.1);color:#fff;font-family:var(--ff-ui);font-size:0.9rem;font-weight:600;padding:14px 24px;border-radius:var(--radius-sm);border:2px solid rgba(255,255,255,0.2);cursor:pointer;">More Games</button>
       </div>
@@ -711,6 +838,9 @@ function wdColorKey(l,status) {
   }
 }
 function showWordleResult(won) {
+  const finalScore = won ? 50 : 0;
+  const pct = won ? 100 : 0;
+  recordGameResult(currentGame.title, finalScore, pct);
   document.getElementById('modal-inner').innerHTML = `
     <div style="padding:32px;text-align:center;">
       <div style="font-size:3.5rem;margin-bottom:12px;">${won?'🎉':'😔'}</div>
@@ -718,7 +848,8 @@ function showWordleResult(won) {
       <div style="font-family:var(--ff-ui);font-size:1.4rem;font-weight:800;color:#4a5e8c;letter-spacing:4px;margin:14px 0;">${wdTarget}</div>
       <p style="font-family:var(--ff-body);font-size:0.82rem;color:var(--clr-text-muted);margin-bottom:6px;">${won?'Solved in '+wdGuesses.length+' '+(wdGuesses.length===1?'guess':'guesses')+'!':''}</p>
       ${currentGame.wordle_fact?`<div style="text-align:left;padding:12px 16px;background:var(--clr-bg-alt);border-radius:var(--radius-sm);border-left:3px solid #4a5e8c;font-family:var(--ff-body);font-size:0.82rem;color:var(--clr-text-muted);margin-bottom:20px;line-height:1.5;">${currentGame.wordle_fact}</div>`:''}
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      ${buildHeritageIQPanel()}
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
         <button onclick="startGame()" style="${btnStyle('#4a5e8c')}">Play Again</button>
         <button onclick="closeGameModal()" style="${btnStyleOutline()}">More Games</button>
       </div>
@@ -773,6 +904,7 @@ window.flipMemCard = function (idx) {
 
 function showMemoryResult() {
   const pairs=currentGame.memory_pairs.length, eff=Math.round((pairs/Math.max(memAttempts,pairs))*100);
+  recordGameResult(currentGame.title, 40, eff);
   document.getElementById('modal-inner').innerHTML=`
     <div style="padding:40px 32px;text-align:center;">
       <div style="font-size:3.5rem;margin-bottom:12px;">🧩</div>
@@ -780,7 +912,8 @@ function showMemoryResult() {
       <div style="display:flex;gap:16px;justify-content:center;margin-bottom:24px;flex-wrap:wrap;">
         ${statBox(memAttempts,'Attempts','#1e6e6e')}${statBox(eff+'%','Efficiency','#2e8b57')}${statBox(pairs,'Pairs','#2e8b57')}
       </div>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      ${buildHeritageIQPanel()}
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
         <button onclick="startGame()" style="${btnStyle('#1e6e6e')}">Play Again</button>
         <button onclick="closeGameModal()" style="${btnStyleOutline()}">More Games</button>
       </div>
@@ -844,6 +977,7 @@ function checkTimeline() {
 
 function showTimelineResult() {
   const total=currentGame.questions_data.length, pct=Math.round((score/(total*24))*100);
+  recordGameResult(currentGame.title, score, pct);
   document.getElementById('modal-inner').innerHTML=`
     <div style="padding:40px 32px;text-align:center;">
       <div style="font-size:3.5rem;margin-bottom:12px;">⏳</div>
@@ -851,7 +985,8 @@ function showTimelineResult() {
       <div style="display:flex;gap:16px;justify-content:center;margin-bottom:24px;flex-wrap:wrap;">
         ${statBox(score,'Score','#5a3d82')}${statBox(pct+'%','Accuracy','#2e8b57')}
       </div>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      ${buildHeritageIQPanel()}
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
         <button onclick="startGame()" style="${btnStyle('#5a3d82')}">Play Again</button>
         <button onclick="closeGameModal()" style="${btnStyleOutline()}">More Games</button>
       </div>
@@ -914,12 +1049,14 @@ window.selectRight = function (di) {
 };
 
 function showMatcherResult() {
+  recordGameResult(currentGame.title, score, 85);
   document.getElementById('modal-inner').innerHTML=`
     <div style="padding:40px 32px;text-align:center;">
       <div style="font-size:3.5rem;margin-bottom:12px;">🔗</div>
       <h2 style="font-family:var(--ff-head);font-size:1.5rem;color:var(--clr-dark);margin-bottom:20px;">All Pairs Matched!</h2>
       <div style="font-family:var(--ff-head);font-size:3rem;font-weight:800;color:${currentGame.badgeColor};margin-bottom:24px;">${score} pts</div>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      ${buildHeritageIQPanel()}
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
         <button onclick="startGame()" style="${btnStyle(currentGame.badgeColor)}">Play Again</button>
         <button onclick="closeGameModal()" style="${btnStyleOutline()}">More Games</button>
       </div>
@@ -974,13 +1111,15 @@ window.answerEscape = function (idx) {
 };
 
 function showEscapeVictory() {
+  recordGameResult(currentGame.title, score, 100);
   document.getElementById('modal-inner').innerHTML=`
     <div style="background:linear-gradient(135deg,#060f06,#0e2010);padding:48px 32px;text-align:center;">
       <div style="font-size:4rem;margin-bottom:16px;">🏆</div>
       <h2 style="font-family:var(--ff-head);font-size:1.6rem;color:#4ade80;margin-bottom:6px;">Temple Escaped!</h2>
       <p style="font-family:var(--ff-body);font-size:0.9rem;color:rgba(150,255,150,0.7);margin-bottom:20px;">You solved all ${currentGame.questions_data.length} ancient mysteries!</p>
       <div style="font-family:var(--ff-head);font-size:3.5rem;font-weight:800;color:#fbbf24;margin-bottom:28px;">${score} pts</div>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      ${buildHeritageIQPanel()}
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
         <button onclick="startGame()" style="background:#1e6e6e;color:#fff;font-family:var(--ff-ui);font-size:0.9rem;font-weight:700;padding:14px 24px;border-radius:var(--radius-sm);cursor:pointer;border:none;">Play Again</button>
         <button onclick="closeGameModal()" style="background:rgba(255,255,255,0.1);color:#fff;font-family:var(--ff-ui);font-size:0.9rem;font-weight:600;padding:14px 24px;border-radius:var(--radius-sm);border:2px solid rgba(255,255,255,0.2);cursor:pointer;">More Games</button>
       </div>
