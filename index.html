@@ -347,7 +347,13 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Explore by Heritage</h2>
-        <a href="#" class="section-more" id="explore-more">Browse All →</a>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <a href="#" class="section-more" id="explore-more" style="margin-right: 8px;">Browse All →</a>
+          <div class="explore-nav" style="display: flex; gap: 6px;">
+            <button class="spot-btn" id="explore-prev" aria-label="Previous" style="width:36px; height:36px; border-radius:50%; border:1.5px solid var(--clr-border); background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.15rem; color:var(--clr-text); transition:all 0.2s; font-weight:700;">‹</button>
+            <button class="spot-btn" id="explore-next" aria-label="Next" style="width:36px; height:36px; border-radius:50%; border:1.5px solid var(--clr-border); background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.15rem; color:var(--clr-text); transition:all 0.2s; font-weight:700;">›</button>
+          </div>
+        </div>
       </div>
       <div class="heritage-cats" id="heritage-cats">
         <a href="#" class="cat-pill" id="cat-ancient">

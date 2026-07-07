@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HeriTej Pulse — Concept Presentation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --maroon:#7A2A2A;
+    --maroon-deep:#5C1F1F;
+    --indigo:#12182E;
+    --indigo-soft:#1C2440;
+    --gold:#CC9A3A;
+    --gold-soft:#E4C482;
+    --sand:#F6EEDD;
+    --sand-line:#e6d8b8;
+    --ink:#2A211A;
+    --muted:#6b5f4f;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--indigo);font-family:'Poppins',sans-serif;color:var(--ink);overflow:hidden;height:100%;}
+
+  .deck{position:relative;width:100vw;height:100vh;}
+
+  .slide{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    opacity:0; visibility:hidden;
+    transform:translateY(16px);
+    transition:opacity .5s ease, transform .5s ease, visibility .5s;
+    padding:6vh 7vw;
+  }
+  .slide.active{opacity:1; visibility:visible; transform:translateY(0);}
+  .slide.light{background:var(--sand); color:var(--ink);}
+  .slide.dark{background:linear-gradient(160deg,var(--indigo) 0%, #0c0f1e 100%); color:var(--sand);}
+
+  /* subtle temple-carving dot pattern corner motif — the recurring signature element */
+  .motif{
+    position:absolute; width:190px; height:190px; pointer-events:none; opacity:.55;
+  }
+  .motif.tl{top:28px; left:28px;}
+  .motif.br{bottom:28px; right:28px; transform:rotate(180deg);}
+  .motif svg{width:100%; height:100%;}
+
+  .eyebrow{
+    font-family:'Poppins',sans-serif; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+    font-size:12.5px; color:var(--gold); margin-bottom:14px;
+  }
+  .slide.light .eyebrow{color:var(--maroon);}
+
+  h1.title{
+    font-family:'Cinzel',serif; font-weight:600; font-size:clamp(34px,4.6vw,64px);
+    margin:0 0 6px 0; line-height:1.08; letter-spacing:.01em;
+  }
+  .slide.dark h1.title{color:var(--sand);}
+  .slide.light h1.title{color:var(--maroon-deep);}
+
+  .subtitle{
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:400;
+    font-size:clamp(16px,1.6vw,22px); color:var(--gold-soft); max-width:820px; margin-top:8px;
+  }
+  .slide.light .subtitle{color:var(--muted);}
+
+  .content{flex:1; display:flex; align-items:center; margin-top:2vh;}
+
+  /* ---- grid of feature cards with icon-in-circle ---- */
+  .grid{display:grid; gap:22px; width:100%;}
+  .grid.cols-4{grid-template-columns:repeat(4,1fr);}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr);}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr);}
+
+  .card{
+    background:rgba(255,255,255,0.75); border-radius:14px; padding:22px 20px;
+    display:flex; flex-direction:column; gap:12px;
+    box-shadow:0 6px 18px rgba(90,50,20,0.08);
+    border:1px solid var(--sand-line);
+  }
+  .slide.dark .card{
+    background:rgba(255,255,255,0.05); border:1px solid rgba(228,196,130,0.18);
+    box-shadow:none;
+  }
+  .icon-circle{
+    width:48px; height:48px; border-radius:50%;
+    background:var(--maroon); color:var(--sand);
+    display:flex; align-items:center; justify-content:center; font-size:19px;
+    flex-shrink:0;
+  }
+  .slide.dark .icon-circle{background:var(--gold); color:var(--indigo);}
+  .card h3{margin:0; font-size:16.5px; font-weight:600; font-family:'Poppins',sans-serif;}
+  .card p{margin:0; font-size:13px; color:var(--muted); line-height:1.5;}
+  .slide.dark .card p{color:#c6c2d9;}
+
+  /* ---- numbered / list rows ---- */
+  .rows{display:flex; flex-direction:column; gap:16px; width:100%; max-width:900px;}
+  .row-item{display:flex; align-items:center; gap:18px; padding:14px 18px; background:rgba(255,255,255,0.6); border-radius:12px; border:1px solid var(--sand-line);}
+  .slide.dark .row-item{background:rgba(255,255,255,0.05); border-color:rgba(228,196,130,0.18);}
+  .row-item .icon-circle{width:38px; height:38px; font-size:15px;}
+  .row-item span{font-size:16px; font-weight:500;}
+
+  /* ---- flow / process ---- */
+  .flow{display:flex; align-items:center; justify-content:center; gap:0; width:100%; flex-wrap:wrap;}
+  .flow-step{
+    background:rgba(255,255,255,0.75); border:1px solid var(--sand-line); border-radius:14px;
+    padding:26px 22px; text-align:center; min-width:180px; flex:1;
+    box-shadow:0 6px 18px rgba(90,50,20,0.08);
+  }
+  .slide.dark .flow-step{background:rgba(255,255,255,0.05); border-color:rgba(228,196,130,0.18); box-shadow:none;}
+  .flow-step .icon-circle{margin:0 auto 12px auto;}
+  .flow-step p{margin:0; font-size:14px; font-weight:500;}
+  .flow-arrow{font-size:22px; color:var(--gold); margin:0 14px; flex-shrink:0;}
+  .slide.light .flow-arrow{color:var(--maroon);}
+
+  /* ---- phases / roadmap timeline ---- */
+  .timeline{display:flex; width:100%; gap:24px; position:relative;}
+  .phase{flex:1; position:relative; padding-top:46px;}
+  .phase .num{
+    position:absolute; top:0; left:0; width:36px; height:36px; border-radius:50%;
+    background:var(--gold); color:var(--indigo); font-weight:700; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .phase .line{position:absolute; top:18px; left:36px; right:-24px; height:2px; background:rgba(228,196,130,0.35);}
+  .phase:last-child .line{display:none;}
+  .phase h3{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600; margin:0 0 8px 0; color:var(--gold-soft);}
+  .phase p{margin:0; font-size:13.5px; color:#c6c2d9; line-height:1.6;}
+
+  /* ---- tech stack columns ---- */
+  .stack{display:flex; gap:26px; width:100%;}
+  .stack-col{flex:1; background:rgba(255,255,255,0.75); border:1px solid var(--sand-line); border-radius:14px; padding:26px 22px;}
+  .stack-col h3{margin:0 0 10px 0; font-size:15px; font-family:'Poppins',sans-serif; color:var(--maroon-deep); text-transform:uppercase; letter-spacing:.08em;}
+  .stack-col p{margin:0; font-size:15px; font-weight:500; line-height:1.6;}
+
+  /* ---- rules / callout for SEO slide ---- */
+  .rule-list{display:flex; flex-direction:column; gap:14px; width:100%; max-width:760px;}
+  .rule{display:flex; gap:16px; align-items:flex-start; font-size:16px; line-height:1.5;}
+  .rule i{color:var(--gold); font-size:18px; margin-top:2px;}
+  .rule.deny i{color:#B23A3A;}
+
+  /* ---- title slide ---- */
+  .titleslide{align-items:center; justify-content:center; text-align:center;}
+  .titleslide .brand{font-family:'Cinzel',serif; font-weight:700; font-size:clamp(48px,8vw,96px); color:var(--sand); letter-spacing:.03em;}
+  .titleslide .brand .accent{color:var(--gold);}
+  .titleslide .subtitle2{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,2vw,26px); color:var(--gold-soft); margin-top:18px;}
+  .taglinewrap{margin-top:46px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:820px;}
+  .tag{font-size:12.5px; letter-spacing:.05em; padding:8px 16px; border:1px solid rgba(228,196,130,0.4); border-radius:999px; color:var(--gold-soft);}
+
+  /* closing slide */
+  .closeslide{align-items:center; justify-content:center; text-align:center;}
+
+  footer.pageinfo{
+    position:absolute; bottom:26px; left:7vw; font-size:11.5px; letter-spacing:.08em; color:var(--muted); text-transform:uppercase;
+  }
+  .slide.dark footer.pageinfo{color:#7d7a95;}
+
+  /* ---- nav ---- */
+  .nav{
+    position:fixed; bottom:22px; left:50%; transform:translateX(-50%);
+    display:flex; align-items:center; gap:18px; z-index:50;
+    background:rgba(18,24,46,0.85); padding:10px 20px; border-radius:999px;
+    backdrop-filter:blur(6px);
+  }
+  .nav button{
+    background:none; border:none; color:var(--sand); font-size:17px; cursor:pointer;
+    width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    transition:background .2s;
+  }
+  .nav button:hover{background:rgba(228,196,130,0.2);}
+  .nav .counter{color:var(--gold-soft); font-size:12.5px; font-weight:500; letter-spacing:.05em; min-width:52px; text-align:center;}
+
+  ::selection{background:var(--gold-soft); color:var(--indigo);}
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- Slide 1: Title -->
+  <section class="slide dark active titleslide">
+    <div class="motif tl">TEMPLE_MOTIF</div>
+    <div class="motif br">TEMPLE_MOTIF</div>
+    <div class="brand">HERI<span class="accent">TEJ</span> PULSE</div>
+    <div class="subtitle2">India's Heritage News Network</div>
+    <div class="taglinewrap">
+      <span class="tag"><i class="fa-solid fa-newspaper"></i>&nbsp; Daily Heritage News</span>
+      <span class="tag"><i class="fa-solid fa-landmark"></i>&nbsp; Archaeology</span>
+      <span class="tag"><i class="fa-solid fa-mask"></i>&nbsp; Culture</span>
+      <span class="tag"><i class="fa-solid fa-place-of-worship"></i>&nbsp; Temples</span>
+      <span class="tag"><i class="fa-solid fa-fire"></i>&nbsp; Festivals</span>
+      <span class="tag"><i class="fa-solid fa-suitcase-rolling"></i>&nbsp; Travel</span>
+      <span class="tag"><i class="fa-solid fa-calendar-days"></i>&nbsp; Events</span>
+      <span class="tag"><i class="fa-solid fa-people-group"></i>&nbsp; Community</span>
+    </div>
+  </section>
+
+  <!-- Slide 2: Homepage -->
+  <section class="slide light">
+    <div class="eyebrow">Website Concept · 01</div>
+    <h1 class="title">Homepage</h1>
+    <p class="subtitle">The front door — a living pulse of heritage stories, updated every day.</p>
+    <div class="content">
+      <div class="grid cols-4">
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-image"></i></div><h3>Hero Banner</h3><p>Bold visual entry point spotlighting today's top heritage story.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-bolt"></i></div><h3>Breaking News</h3><p>Real-time alerts on discoveries, restorations and events.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-arrow-trend-up"></i></div><h3>Trending Stories</h3><p>What readers across India are engaging with most.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-newspaper"></i></div><h3>Latest News</h3><p>Fresh, chronological feed of original reporting.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-calendar-days"></i></div><h3>Events</h3><p>Upcoming festivals, walks and workshops near you.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-question"></i></div><h3>Daily Quiz</h3><p>A bite-sized heritage challenge, refreshed every day.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-video"></i></div><h3>Featured Video</h3><p>Curated visual storytelling from across the country.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-people-group"></i></div><h3>Community</h3><p>A snapshot of discussions and shared travel stories.</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 3: News Detail Page -->
+  <section class="slide light">
+    <div class="eyebrow">Website Concept · 02</div>
+    <h1 class="title">News Detail Page</h1>
+    <p class="subtitle">Every story told with depth — context, place, and proof of source.</p>
+    <div class="content">
+      <div class="grid cols-2">
+        <div class="rows">
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-image"></i></div><span>Hero Image</span></div>
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-heading"></i></div><span>Headline</span></div>
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-align-left"></i></div><span>Summary</span></div>
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-file-lines"></i></div><span>Article</span></div>
+        </div>
+        <div class="rows">
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-timeline"></i></div><span>Timeline</span></div>
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-images"></i></div><span>Gallery</span></div>
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-map-location-dot"></i></div><span>Map</span></div>
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-link"></i></div><span>Related News &amp; Source Link</span></div>
+        </div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 4: Events -->
+  <section class="slide light">
+    <div class="eyebrow">Website Concept · 03</div>
+    <h1 class="title">Events</h1>
+    <p class="subtitle">From temple festivals to heritage walks — a calendar people can act on.</p>
+    <div class="content">
+      <div class="grid cols-3">
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-calendar-check"></i></div><h3>Upcoming Events</h3><p>A running calendar of what's happening, where.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-hand-holding-heart"></i></div><h3>Volunteer Registration</h3><p>Sign up to support restoration and heritage drives.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-chalkboard-user"></i></div><h3>Workshops</h3><p>Hands-on sessions on crafts, history and conservation.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-fire-flame-curved"></i></div><h3>Temple Festivals</h3><p>Local celebrations, rituals and dates to watch.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-person-walking"></i></div><h3>Heritage Walks</h3><p>Guided tours through India's living monuments.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-video"></i></div><h3>Webinars</h3><p>Online talks with historians and archaeologists.</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 5: Heritage Games -->
+  <section class="slide light">
+    <div class="eyebrow">Website Concept · 04</div>
+    <h1 class="title">Heritage Games</h1>
+    <p class="subtitle">Learning through play — heritage made addictive, one puzzle at a time.</p>
+    <div class="content">
+      <div class="grid cols-3">
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-circle-question"></i></div><h3>Daily Quiz</h3><p>Test your knowledge with a new question each day.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-landmark-dome"></i></div><h3>Guess the Monument</h3><p>Identify iconic sites from clues and imagery.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-spell-check"></i></div><h3>Heritage Word Challenge</h3><p>Word games built around historical vocabulary.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-magnifying-glass"></i></div><h3>Hidden Objects</h3><p>Spot artefacts tucked inside illustrated scenes.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-puzzle-piece"></i></div><h3>Jigsaw Puzzle</h3><p>Piece together famous monuments and art.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-trophy"></i></div><h3>Leaderboard</h3><p>Compete with the community and climb the ranks.</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 6: Community -->
+  <section class="slide light">
+    <div class="eyebrow">Website Concept · 05</div>
+    <h1 class="title">Community</h1>
+    <p class="subtitle">A gathering place for people who love India's stories as much as we do.</p>
+    <div class="content">
+      <div class="grid cols-3">
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-comments"></i></div><h3>Discussion Forum</h3><p>Open conversations on history, culture and heritage.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-camera"></i></div><h3>Photo Sharing</h3><p>Members contribute their own heritage photography.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-route"></i></div><h3>Travel Stories</h3><p>First-hand accounts from journeys across India.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-star"></i></div><h3>Temple Reviews</h3><p>Practical, honest reviews from real visitors.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-user-graduate"></i></div><h3>Expert Discussions</h3><p>Q&amp;A and AMAs with historians and archaeologists.</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 7: Magazine -->
+  <section class="slide light">
+    <div class="eyebrow">Website Concept · 06</div>
+    <h1 class="title">Magazine</h1>
+    <p class="subtitle">Long-form heritage journalism, packaged weekly.</p>
+    <div class="content">
+      <div class="grid cols-2">
+        <div class="rows">
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-book-open"></i></div><span>Weekly Magazine</span></div>
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-star"></i></div><span>Featured Stories</span></div>
+        </div>
+        <div class="rows">
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-microphone"></i></div><span>Interviews</span></div>
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-flask"></i></div><span>Research Articles</span></div>
+          <div class="row-item"><div class="icon-circle"><i class="fa-solid fa-download"></i></div><span>Downloads</span></div>
+        </div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 8: Instagram Strategy -->
+  <section class="slide dark">
+    <div class="motif tl">TEMPLE_MOTIF</div>
+    <div class="eyebrow">Distribution · 07</div>
+    <h1 class="title">Instagram Strategy</h1>
+    <p class="subtitle">Every article becomes a story loop — reach, engage, and route readers home.</p>
+    <div class="content">
+      <div class="flow">
+        <div class="flow-step"><div class="icon-circle"><i class="fa-solid fa-globe"></i></div><p>Website Article</p></div>
+        <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="flow-step"><div class="icon-circle"><i class="fa-solid fa-quote-left"></i></div><p>Short Caption</p></div>
+        <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="flow-step"><div class="icon-circle"><i class="fa-solid fa-layer-group"></i></div><p>Carousel / Reel</p></div>
+        <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="flow-step"><div class="icon-circle"><i class="fa-solid fa-link"></i></div><p>Link Back to Website</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 9: AI Features -->
+  <section class="slide light">
+    <div class="eyebrow">Product · 08</div>
+    <h1 class="title">AI Features</h1>
+    <p class="subtitle">Smart tools that make heritage content faster to read and easier to access.</p>
+    <div class="content">
+      <div class="grid cols-4">
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-list-check"></i></div><h3>AI News Summary</h3><p>Instant summaries of long articles.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-language"></i></div><h3>AI Translation</h3><p>Regional language access for every reader.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-volume-high"></i></div><h3>AI Voice Reader</h3><p>Listen to articles hands-free, on the go.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-robot"></i></div><h3>AI Heritage Assistant</h3><p>Ask questions and get context instantly.</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 10: User Features -->
+  <section class="slide light">
+    <div class="eyebrow">Product · 09</div>
+    <h1 class="title">User Features</h1>
+    <p class="subtitle">Small conveniences that keep readers coming back daily.</p>
+    <div class="content">
+      <div class="grid cols-3">
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-bookmark"></i></div><h3>Bookmarks</h3><p>Save stories to read later.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-heart"></i></div><h3>Likes</h3><p>Show appreciation for great reporting.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-comment"></i></div><h3>Comments</h3><p>Join the conversation on every story.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-user"></i></div><h3>Profile</h3><p>A personal space for saved content and activity.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-bell"></i></div><h3>Notifications</h3><p>Stay updated on stories and replies.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-fire"></i></div><h3>Daily Streak</h3><p>A small reward for returning every day.</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 11: Admin Panel -->
+  <section class="slide light">
+    <div class="eyebrow">Operations · 10</div>
+    <h1 class="title">Admin Panel</h1>
+    <p class="subtitle">The control room behind the scenes — quality, structure, and insight.</p>
+    <div class="content">
+      <div class="grid cols-3">
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-clipboard-check"></i></div><h3>News Approval</h3><p>Editorial review before anything goes live.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-folder-tree"></i></div><h3>Categories</h3><p>Organized topics for easy navigation.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-magnifying-glass-chart"></i></div><h3>SEO</h3><p>Discoverability built into every publish step.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-calendar-days"></i></div><h3>Events</h3><p>Manage listings and registrations centrally.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-users-gear"></i></div><h3>Users</h3><p>Manage roles, access and community accounts.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div><h3>Analytics</h3><p>Track what's working and where to invest.</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 12: Revenue Model -->
+  <section class="slide light">
+    <div class="eyebrow">Business · 11</div>
+    <h1 class="title">Revenue Model</h1>
+    <p class="subtitle">Multiple, complementary streams built for sustainability.</p>
+    <div class="content">
+      <div class="grid cols-3">
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-rectangle-ad"></i></div><h3>AdSense</h3><p>Contextual advertising across the site.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-handshake"></i></div><h3>Sponsored Content</h3><p>Partnered features aligned with heritage causes.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-id-card"></i></div><h3>Membership</h3><p>Paid perks for the most engaged readers.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-hand-holding-dollar"></i></div><h3>Donations</h3><p>Community support for preservation work.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-shirt"></i></div><h3>Merchandise</h3><p>Heritage-inspired products and collectibles.</p></div>
+        <div class="card"><div class="icon-circle"><i class="fa-solid fa-book"></i></div><h3>Magazine Subscription</h3><p>Recurring revenue from long-form content.</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 13: SEO & Copyright -->
+  <section class="slide dark">
+    <div class="motif tl">TEMPLE_MOTIF</div>
+    <div class="eyebrow">Editorial Standards · 12</div>
+    <h1 class="title">SEO &amp; Copyright</h1>
+    <p class="subtitle">Original, credible, and search-friendly — non-negotiable ground rules.</p>
+    <div class="content">
+      <div class="rule-list">
+        <div class="rule"><i class="fa-solid fa-circle-check"></i><span>Write original articles.</span></div>
+        <div class="rule deny"><i class="fa-solid fa-circle-xmark"></i><span>Do NOT copy text or images.</span></div>
+        <div class="rule"><i class="fa-solid fa-circle-check"></i><span>Credit original sources with links.</span></div>
+        <div class="rule"><i class="fa-solid fa-circle-check"></i><span>Add your own research and insights.</span></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 14: Technology -->
+  <section class="slide light">
+    <div class="eyebrow">Technical Stack · 13</div>
+    <h1 class="title">Technology</h1>
+    <p class="subtitle">A practical, scalable stack for a fast, content-heavy news site.</p>
+    <div class="content">
+      <div class="stack">
+        <div class="stack-col"><h3>Frontend</h3><p>HTML / CSS / JS<br>or WordPress</p></div>
+        <div class="stack-col"><h3>Backend</h3><p>PHP + MySQL</p></div>
+        <div class="stack-col"><h3>Hosting</h3><p>VPS + CDN + Cloudflare</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 15: Future Roadmap -->
+  <section class="slide light">
+    <div class="eyebrow">Looking Ahead · 14</div>
+    <h1 class="title">Future Roadmap</h1>
+    <p class="subtitle">Where HeriTej Pulse grows next.</p>
+    <div class="content">
+      <div class="card" style="max-width:420px;">
+        <div class="icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <h3 style="font-size:20px;">Mobile App</h3>
+        <p>Bringing the full heritage experience to readers' pockets.</p>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 16: Launch Plan -->
+  <section class="slide dark">
+    <div class="motif tl">TEMPLE_MOTIF</div>
+    <div class="eyebrow">Execution · 15</div>
+    <h1 class="title">Launch Plan</h1>
+    <p class="subtitle">A phased rollout, building complexity as the community grows.</p>
+    <div class="content">
+      <div class="timeline">
+        <div class="phase"><div class="num">1</div><div class="line"></div><h3>Phase 1</h3><p>Website + News + Instagram</p></div>
+        <div class="phase"><div class="num">2</div><div class="line"></div><h3>Phase 2</h3><p>Games + Community</p></div>
+        <div class="phase"><div class="num">3</div><h3>Phase 3</h3><p>AI + Mobile App + Membership</p></div>
+      </div>
+    </div>
+    <footer class="pageinfo">HeriTej Pulse — Concept</footer>
+  </section>
+
+  <!-- Slide 17: Thank You -->
+  <section class="slide dark closeslide">
+    <div class="motif tl">TEMPLE_MOTIF</div>
+    <div class="motif br">TEMPLE_MOTIF</div>
+    <div class="eyebrow" style="justify-content:center; display:flex;">Thank You</div>
+    <div class="brand" style="font-size:clamp(38px,6vw,72px);">HERI<span class="accent">TEJ</span> PULSE</div>
+    <div class="subtitle2">Connecting India with its Heritage</div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prevBtn" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+  <span class="counter"><span id="curNum">1</span> / <span id="totalNum">17</span></span>
+  <button id="nextBtn" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let idx = 0;
+  document.getElementById('totalNum').textContent = total;
+
+  // Build the temple-arch motif SVG (repeating carved-dot corner ornament)
+  const motifSVG = `
+    <svg viewBox="0 0 190 190" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 180 L10 90 A80 80 0 0 1 90 10 L180 10" fill="none" stroke="#CC9A3A" stroke-width="2"/>
+      <circle cx="10" cy="180" r="4" fill="#CC9A3A"/>
+      <circle cx="10" cy="130" r="3" fill="#CC9A3A" opacity="0.7"/>
+      <circle cx="15" cy="80" r="3" fill="#CC9A3A" opacity="0.7"/>
+      <circle cx="35" cy="45" r="3" fill="#CC9A3A" opacity="0.7"/>
+      <circle cx="70" cy="20" r="3" fill="#CC9A3A" opacity="0.7"/>
+      <circle cx="130" cy="10" r="3" fill="#CC9A3A" opacity="0.7"/>
+      <circle cx="180" cy="10" r="4" fill="#CC9A3A"/>
+    </svg>`;
+  document.querySelectorAll('.motif').forEach(m => m.innerHTML = motifSVG);
+
+  function render(){
+    slides.forEach((s,i)=> s.classList.toggle('active', i===idx));
+    document.getElementById('curNum').textContent = idx+1;
+  }
+  function go(delta){
+    idx = (idx + delta + total) % total;
+    render();
+  }
+  document.getElementById('nextBtn').addEventListener('click', ()=>go(1));
+  document.getElementById('prevBtn').addEventListener('click', ()=>go(-1));
+  window.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowRight' || e.key === ' ') go(1);
+    if(e.key === 'ArrowLeft') go(-1);
+  });
+  render();
+</script>
+
+</body>
+</html>

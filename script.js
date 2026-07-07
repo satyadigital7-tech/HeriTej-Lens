@@ -170,6 +170,20 @@ document.addEventListener('DOMContentLoaded', () => {
     spotTrack.style.transform = `translateX(-${spotOffset}px)`;
   });
 
+  /* ─── Explore by Heritage Categories Slider ─── */
+  const exploreCats = document.getElementById('heritage-cats');
+  const explorePrev = document.getElementById('explore-prev');
+  const exploreNext = document.getElementById('explore-next');
+
+  if (exploreCats && explorePrev && exploreNext) {
+    explorePrev.addEventListener('click', () => {
+      exploreCats.scrollBy({ left: -240, behavior: 'smooth' });
+    });
+    exploreNext.addEventListener('click', () => {
+      exploreCats.scrollBy({ left: 240, behavior: 'smooth' });
+    });
+  }
+
   /* ─── Quotes Rotator ─────────────────────────── */
   const quotes = [
     { text: '"The ancient Nalanda University had a library of 9 million manuscripts — it burned for three months after being attacked in 1193 CE."', cat: 'ANCIENT LEARNING' },
