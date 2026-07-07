@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (ARTICLES['2'])  { ARTICLES['2'].sourceName = 'IIT Delhi Research Division'; ARTICLES['2'].sourceUrl = 'https://iitd.ac.in'; }
   if (ARTICLES['3'])  { ARTICLES['3'].sourceName = 'INTACH Heritage Conservation'; ARTICLES['3'].sourceUrl = 'https://www.intach.org'; }
   if (ARTICLES['4'])  { ARTICLES['4'].sourceName = 'Karnataka Tourism Development'; ARTICLES['4'].sourceUrl = 'https://www.karnatakatourism.org'; }
-  if (ARTICLES['14']) { ARTICLES['14'].sourceName = 'Fédération de la Haute Couture'; ARTICLES['14'].sourceUrl = 'https://fhcm.paris/en/'; }
+  if (ARTICLES['14']) { ARTICLES['14'].sourceName = 'The National'; ARTICLES['14'].sourceUrl = 'https://www.thenationalnews.com/magazine/2026/07/03/manish-malhotra-becomes-latest-designer-to-bring-indian-heritage-to-haute-couture/'; }
 
   const params    = new URLSearchParams(window.location.search);
   const articleId = params.get('id') || '2'; // default to Khajuraho
